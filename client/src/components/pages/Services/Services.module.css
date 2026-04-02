@@ -1,0 +1,124 @@
+.Info {
+    max-width: 1720px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-top: 70px;
+}
+
+.ServH{
+     max-width: 1720px;
+    margin: 0 auto;
+    color: #2E3335;
+    font-family: "Raleway", sans-serif;
+    margin-top: 115px;
+}
+
+.expr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 265px;
+    background-color: #4A4FB9;
+    color: #FAFAFA;
+    border: 0px solid;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: "Raleway", sans-serif;
+}
+
+.ServButt{
+ display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 200px;
+    background-color: #4A4FB9;
+    color: #FAFAFA;
+    border: 0px solid;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: "Raleway", sans-serif;
+    margin-top: 20px;
+}
+.ServicesCards{
+    max-width: 1720px;
+    margin: 0 auto;
+    font-family: "Raleway", sans-serif;
+    color: #2E3335;
+    flex-direction: column;
+    gap: 100px;
+}
+
+.ServicesCard{
+    max-width: 1720px;
+    margin: 0 auto;
+    display: flex;
+    align-items: self-start;
+    justify-content: space-between;
+    margin-top: 75px;
+}
+
+.Left{
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+}
+
+.RightImg{
+    width: 600px;
+    padding-top: 100px;
+}
+
+.CardH{
+    font-weight: bold;
+    font-size: 23px;
+    margin-bottom: 40px;
+}
+.CardTxt{
+    font-size: 16px;
+    margin: 0;
+}
+
+.CardH3{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.CardH2{
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.CardContentTxt{
+    font-size: 16px;
+}
+
+.CardTxtSpan{
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.CardH4{
+    font-weight: 600;
+    margin-top: 30px;
+}
+
+.Card{
+    margin-top: 40px;
+}
+
+.CardContentOl{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.CardContentTxtSpan{
+    font-weight: 600;
+}

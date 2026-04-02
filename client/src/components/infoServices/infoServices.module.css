@@ -1,0 +1,18 @@
+.content {
+    background-color: #4A4FB9;
+    width: 800px;
+    height: 160px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contentTxt {
+    width: 710px;
+    color: #FAFAFA;
+    font-family: "Raleway", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+}
+

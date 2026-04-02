@@ -1,0 +1,631 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+  padding: 20px;
+  overflow-y: auto; 
+  overflow-x: hidden;
+}
+
+.modalContent {
+  background: white;
+  border-radius: 20px;
+  padding: 32px;
+  width: 100%;
+  max-width: 500px;
+  
+  font-family: "Raleway", sans-serif;
+  position: relative;
+  animation: slideIn 0.3s ease;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  margin: auto;
+  max-height: 90vh;
+  overflow-y: auto; 
+  overflow-x: hidden;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #2E3335;
+  transition: color 0.3s;
+}
+
+.closeButton:hover {
+  color: #4A4FB9;
+}
+
+.modalTitle {
+  font-size: 28px;
+  font-weight: bold;
+  color: #2E3335;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formGroup label {
+  font-weight: bold;
+  color: #2E3335;
+  font-size: 14px;
+}
+
+.formGroup input {
+  padding: 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: "Raleway", sans-serif;
+  transition: border-color 0.3s;
+}
+
+.formGroup input:focus {
+  outline: none;
+  border-color: #4A4FB9;
+}
+
+.formGroup input.error {
+  border-color: #f44336;
+}
+
+.errorText {
+  color: #f44336;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.submitButton {
+  background-color: #4A4FB9;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.submitButton:hover {
+  background-color: #3a3f9e;
+}
+
+.submitButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.switchText {
+  text-align: center;
+  margin-top: 20px;
+  color: #2E3335;
+}
+
+.switchLink {
+  color: #4A4FB9;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.switchLink:hover {
+  text-decoration: underline;
+}
+
+.errorMessage {
+  background-color: #ffebee;
+  color: #f44336;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.formGroup select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: "Raleway", sans-serif;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.formGroup select:focus {
+  outline: none;
+  border-color: #4A4FB9;
+}
+
+.formGroup select.error {
+  border-color: #f44336;
+}
+
+.submitMessage {
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.submitMessage.success {
+  background-color: #e8f5e9;
+  color: #4caf50;
+  border: 1px solid #4caf50;
+}
+
+.submitMessage.error {
+  background-color: #ffebee;
+  color: #f44336;
+  border: 1px solid #f44336;
+}
+
+/* Большое модальное окно для товара */
+.modalLarge {
+  max-width: 1000px;
+  width: 100%;
+  padding: 32px;
+  max-height: 85vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Стилизация скроллбара для модального окна */
+.modalLarge::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modalLarge::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.modalLarge::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.modalLarge::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Лайаут для товара */
+.modalProductLayout {
+  display: flex;
+  gap: 32px;
+  overflow-x: hidden;
+  align-items: flex-start;
+}
+
+.modalProductInfo {
+  flex: 1;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+.modalFormSection {
+  flex: 1;
+  background: #f8fafc;
+  border-radius: 16px;
+  padding: 28px 24px;
+  min-width: 0;
+  overflow-x: hidden;
+  position: sticky;
+  top: 20px; /* Форма прилипает при прокрутке */
+}
+
+
+/* Изображение товара */
+.modalProductImage {
+  margin: 20px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f8fafc;
+}
+
+.modalProductImage img {
+  width: 100%;
+  height: auto;
+  max-height: 250px;
+  object-fit: contain;
+}
+
+/* Описание и характеристики */
+.modalProductDescription {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #4a5568;
+  margin-bottom: 20px;
+  font-family: "Raleway", sans-serif;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.specifications {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 16px;
+  overflow-x: auto;
+}
+
+.specifications h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a2c3e;
+  margin-bottom: 12px;
+  font-family: "Raleway", sans-serif;
+}
+
+.specifications ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.specifications li {
+  font-size: 13px;
+  color: #4a5568;
+  margin-bottom: 6px;
+  font-family: "Raleway", sans-serif;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+
+/* Форма в модальном окне */
+.formSectionTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a2c3e;
+  margin-bottom: 8px;
+  font-family: "Raleway", sans-serif;
+}
+
+.formSectionSubtitle {
+  font-size: 13px;
+  color: #6c7a89;
+  margin-bottom: 20px;
+  font-family: "Raleway", sans-serif;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.formGroup label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #4a5568;
+  font-family: "Raleway", sans-serif;
+}
+
+.formGroup input,
+.formGroup select,
+.textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: "Raleway", sans-serif;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.textarea:focus {
+  outline: none;
+  border-color: #4A4FB9;
+}
+
+.formGroup input.error,
+.formGroup select.error {
+  border-color: #ef4444;
+}
+
+.errorText {
+  color: #ef4444;
+  font-size: 12px;
+  font-family: "Raleway", sans-serif;
+}
+
+.submitButton {
+  width: 100%;
+  background-color: #4A4FB9;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: "Raleway", sans-serif;
+}
+
+.submitButton:hover:not(:disabled) {
+  background-color: #3a3f9e;
+}
+
+.submitButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.closeButton {
+  position: sticky;
+  top: 0;
+  float: right;
+  background: white;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #999;
+  transition: all 0.3s;
+  z-index: 10;
+  line-height: 1;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.closeButton:hover {
+  color: #2E3335;
+  background-color: #f0f0f0;
+}
+
+
+.productExtraInfo {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #e9ecef;
+}
+
+.priceInfo, .stockInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.priceLabel, .stockLabel {
+  font-weight: 600;
+  color: #4a5568;
+  font-family: "Raleway", sans-serif;
+}
+
+.priceValue {
+  font-size: 18px;
+  font-weight: 700;
+  color: #4A4FB9;
+  font-family: "Raleway", sans-serif;
+}
+
+.inStock {
+  color: #4caf50;
+  font-weight: 500;
+}
+
+.outOfStock {
+  color: #f44336;
+  font-weight: 500;
+}
+
+.modalTitle {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1a2c3e;
+  margin-bottom: 20px;
+  font-family: "Raleway", sans-serif;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .modalContent {
+    padding: 24px;
+    max-height: 95vh;
+  }
+  
+  .modalLarge {
+    padding: 24px;
+  }
+  
+  .modalProductLayout {
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .modalFormSection {
+    padding: 20px;
+  }
+  
+  .modalProductImage img {
+    max-height: 200px;
+  }
+}
+
+/* Мобильные устройства */
+@media (max-width: 640px) {
+  .modalOverlay {
+    padding: 10px;
+  }
+  
+  .modalContent {
+    padding: 20px;
+    max-height: 98vh;
+  }
+  
+  .modalLarge {
+    padding: 20px;
+  }
+  
+  .modalFormSection {
+    padding: 16px;
+  }
+  
+  .formSectionTitle {
+    font-size: 18px;
+  }
+  
+  .formGroup input,
+  .formGroup select,
+  .textarea {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  
+  .submitButton {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+  
+  .specifications ul {
+    padding-left: 16px;
+  }
+  
+  .specifications li {
+    font-size: 12px;
+  }
+}
+
+/* Маленькие мобильные */
+@media (max-width: 480px) {
+  .modalContent {
+    padding: 16px;
+  }
+  
+  .modalLarge {
+    padding: 16px;
+  }
+  
+  .closeButton {
+    top: 12px;
+    right: 12px;
+    width: 28px;
+    height: 28px;
+    font-size: 24px;
+  }
+  
+  .modalFormSection {
+    padding: 14px;
+  }
+  
+  .formSectionTitle {
+    font-size: 16px;
+  }
+  
+  .formSectionSubtitle {
+    font-size: 12px;
+  }
+  
+  .specifications {
+    padding: 12px;
+  }
+}
+@media (min-width: 992px) {
+  .modalFormSection {
+    margin-top: 60px;
+  }
+}
+
+/* На планшетах и мобильных форма под карточкой */
+@media (max-width: 991px) {
+  .modalProductLayout {
+    flex-direction: column;
+  }
+  
+  .modalFormSection {
+    margin-top: 0;
+  }
+}
+/* Очень большие экраны */
+@media (min-width: 1200px) {
+  .modalLarge {
+    max-width: 1100px;
+  }
+  
+  .modalProductLayout {
+    gap: 40px;
+  }
+}

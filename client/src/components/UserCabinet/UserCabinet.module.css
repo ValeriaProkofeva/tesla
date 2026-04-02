@@ -1,0 +1,434 @@
+/* Основные стили */
+.cabinetContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 120px 20px 80px;
+  min-height: calc(100vh - 300px);
+  font-family: "Raleway", sans-serif;
+}
+
+.cabinetWrapper {
+  display: flex;
+  gap: 32px;
+  background: #ffffff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Sidebar */
+.sidebar {
+  width: 280px;
+  background: #f8fafc;
+  border-right: 1px solid #e9ecef;
+  flex-shrink: 0;
+}
+
+.userAvatar {
+  padding: 32px 24px;
+  text-align: center;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.avatarLarge {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #4A4FB9 0%, #6c72d1 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-size: 32px;
+  font-weight: 600;
+  color: #ffffff;
+  font-family: "Raleway", sans-serif;
+}
+
+.userNameSidebar {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a2c3e;
+  margin-bottom: 4px;
+  font-family: "Raleway", sans-serif;
+}
+
+.userEmailSidebar {
+  font-size: 13px;
+  color: #6c7a89;
+  font-family: "Raleway", sans-serif;
+}
+
+.sidebarNav {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0;
+}
+
+.sidebarItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 24px;
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4a5568;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  font-family: "Raleway", sans-serif;
+  position: relative;
+}
+
+.sidebarItem:hover {
+  background-color: #f1f5f9;
+  color: #4A4FB9;
+}
+
+.sidebarItem.active {
+  background-color: #eef2ff;
+  color: #4A4FB9;
+  border-right: 3px solid #4A4FB9;
+}
+
+.sidebarIcon {
+  width: 20px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.badge {
+  margin-left: auto;
+  background-color: #e9ecef;
+  color: #4a5568;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-family: "Raleway", sans-serif;
+}
+
+.sidebarItem.active .badge {
+  background-color: #4A4FB9;
+  color: #ffffff;
+}
+
+/* Main Content */
+.mainContent {
+  flex: 1;
+  padding: 32px;
+  min-width: 0;
+}
+
+/* Общие заголовки */
+.sectionTitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1a2c3e;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e9ecef;
+  font-family: "Raleway", sans-serif;
+}
+
+.sectionSubtitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a2c3e;
+  margin: 24px 0 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e9ecef;
+  font-family: "Raleway", sans-serif;
+}
+
+/* Профиль */
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.infoRow {
+  display: flex;
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+}
+
+.label {
+  width: 140px;
+  font-weight: 600;
+  color: #4a5568;
+  font-family: "Raleway", sans-serif;
+}
+
+.value {
+  flex: 1;
+  color: #1a2c3e;
+  font-family: "Raleway", sans-serif;
+}
+
+.editButton {
+  background-color: #4A4FB9;
+  color: #ffffff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-family: "Raleway", sans-serif;
+  align-self: flex-start;
+}
+
+.editButton:hover {
+  background-color: #3a3f9e;
+}
+
+/* Форма редактирования */
+.editForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formGroup label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #4a5568;
+  font-family: "Raleway", sans-serif;
+}
+
+.formGroup input {
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: "Raleway", sans-serif;
+  transition: border-color 0.2s;
+}
+
+.formGroup input:focus {
+  outline: none;
+  border-color: #4A4FB9;
+}
+
+.formGroup input.error {
+  border-color: #ef4444;
+}
+
+.errorText {
+  color: #ef4444;
+  font-size: 12px;
+  font-family: "Raleway", sans-serif;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.saveButton, .cancelButton {
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: "Raleway", sans-serif;
+  transition: all 0.2s;
+}
+
+.saveButton {
+  background-color: #4A4FB9;
+  color: #ffffff;
+  border: none;
+}
+
+.saveButton:hover {
+  background-color: #3a3f9e;
+}
+
+.cancelButton {
+  background-color: #f1f5f9;
+  color: #4a5568;
+  border: 1px solid #d1d5db;
+}
+
+.cancelButton:hover {
+  background-color: #e9ecef;
+}
+
+/* Список заявок */
+.requestsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.requestCard {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid #e9ecef;
+  transition: all 0.2s;
+}
+
+.requestCard:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.requestHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.requestDate {
+  font-size: 12px;
+  color: #6c7a89;
+  font-family: "Raleway", sans-serif;
+}
+
+.requestStatus {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-family: "Raleway", sans-serif;
+}
+
+.statusNew {
+  background-color: #fff7e5;
+  color: #f59e0b;
+}
+
+.statusProcessing {
+  background-color: #eef2ff;
+  color: #4A4FB9;
+}
+
+.statusCompleted {
+  background-color: #e6f7e6;
+  color: #10b981;
+}
+
+.statusCancelled {
+  background-color: #fee2e2;
+  color: #ef4444;
+}
+
+.requestBody {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.requestBody p {
+  margin: 0;
+  font-size: 14px;
+  color: #1a2c3e;
+  font-family: "Raleway", sans-serif;
+}
+
+.requestBody strong {
+  color: #4a5568;
+  font-weight: 600;
+  min-width: 120px;
+  display: inline-block;
+}
+
+.loading, .noData {
+  text-align: center;
+  padding: 48px;
+  color: #6c7a89;
+  font-family: "Raleway", sans-serif;
+}
+
+.hint {
+  font-size: 13px;
+  color: #9ca3af;
+  margin-top: 8px;
+}
+
+.message {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  font-size: 14px;
+  font-family: "Raleway", sans-serif;
+}
+
+.message.success {
+  background-color: #e6f7e6;
+  color: #10b981;
+  border: 1px solid #d1f0d1;
+}
+
+.message.error {
+  background-color: #fee2e2;
+  color: #ef4444;
+  border: 1px solid #fcc5c5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cabinetContainer {
+    padding: 100px 16px 60px;
+  }
+
+  .cabinetWrapper {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #e9ecef;
+  }
+
+  .sidebarNav {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 8px;
+  }
+
+  .sidebarItem {
+    flex: 1;
+    justify-content: center;
+    padding: 10px 16px;
+  }
+
+  .sidebarItem.active {
+    border-right: none;
+    border-bottom: 2px solid #4A4FB9;
+  }
+
+  .mainContent {
+    padding: 24px;
+  }
+
+  .infoRow {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .label {
+    width: auto;
+  }
+}

@@ -1,0 +1,192 @@
+.toast {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  z-index: 10000;
+  min-width: 320px;
+  max-width: 450px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: "Raleway", sans-serif;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.toast.slideOut {
+  animation: slideOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.content {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 20px;
+  position: relative;
+}
+
+.icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: "Raleway", sans-serif;
+}
+
+.message {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #2E3335;
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+}
+
+.closeBtn {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #9e9e9e;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  font-family: "Raleway", sans-serif;
+  border-radius: 50%;
+}
+
+.closeBtn:hover {
+  color: #2E3335;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.progressBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+  animation: progress linear forwards;
+}
+
+/* Типы уведомлений с фирменными цветами */
+.toast.success {
+  border-left: 4px solid #4caf50;
+  background: linear-gradient(135deg, #ffffff 0%, #f0f9f0 100%);
+}
+
+.toast.success .icon {
+  background-color: #4caf50;
+  color: white;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
+}
+
+.toast.error {
+  border-left: 4px solid #f44336;
+  background: linear-gradient(135deg, #ffffff 0%, #fff5f5 100%);
+}
+
+.toast.error .icon {
+  background-color: #f44336;
+  color: white;
+  box-shadow: 0 2px 8px rgba(244, 67, 54, 0.2);
+}
+
+.toast.info {
+  border-left: 4px solid #4A4FB9;
+  background: linear-gradient(135deg, #ffffff 0%, #f0f1ff 100%);
+}
+
+.toast.info .icon {
+  background-color: #4A4FB9;
+  color: white;
+  box-shadow: 0 2px 8px rgba(74, 79, 185, 0.2);
+}
+
+.toast.warning {
+  border-left: 4px solid #ff9800;
+  background: linear-gradient(135deg, #ffffff 0%, #fff8f0 100%);
+}
+
+.toast.warning .icon {
+  background-color: #ff9800;
+  color: white;
+  box-shadow: 0 2px 8px rgba(255, 152, 0, 0.2);
+}
+
+@keyframes progress {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+/* Дополнительные стили для улучшения */
+.toast.success .message strong {
+  color: #4caf50;
+}
+
+.toast.error .message strong {
+  color: #f44336;
+}
+
+.toast.info .message strong {
+  color: #4A4FB9;
+}
+
+.toast.warning .message strong {
+  color: #ff9800;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .toast {
+    top: 80px;
+    right: 16px;
+    left: 16px;
+    min-width: auto;
+    max-width: none;
+  }
+  
+  .content {
+    padding: 14px 16px;
+  }
+  
+  .message {
+    font-size: 13px;
+  }
+}
