@@ -120,7 +120,6 @@ const ProductModal = ({ isOpen, onClose, product }) => {
         <button className={styles.closeButton} onClick={onClose}>×</button>
         
         <div className={styles.modalProductLayout}>
-          {/* Левая часть - информация о товаре */}
           <div className={styles.modalProductInfo}>
             <h2 className={styles.modalTitle}>{product.name}</h2>
             <div className={styles.modalProductImage}>
@@ -134,7 +133,6 @@ const ProductModal = ({ isOpen, onClose, product }) => {
             </div>
             <p className={styles.modalProductDescription}>{product.fullDescription}</p>
             
-            {/* Проверяем, есть ли характеристики */}
             {product.specifications && product.specifications.length > 0 && (
               <div className={styles.specifications}>
                 <h4>Технические характеристики:</h4>
@@ -146,7 +144,6 @@ const ProductModal = ({ isOpen, onClose, product }) => {
               </div>
             )}
             
-            {/* Дополнительная информация о цене и наличии */}
             <div className={styles.productExtraInfo}>
               {product.price && (
                 <div className={styles.priceInfo}>
@@ -163,7 +160,6 @@ const ProductModal = ({ isOpen, onClose, product }) => {
             </div>
           </div>
 
-          {/* Правая часть - форма заказа */}
           <div className={styles.modalFormSection}>
             <h3 className={styles.formSectionTitle}>Заказать оборудование</h3>
             <p className={styles.formSectionSubtitle}>Оставьте свои данные, и наш менеджер свяжется с вами</p>

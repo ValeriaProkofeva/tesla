@@ -27,7 +27,7 @@ app.use('/api/equipment-orders', equipmentOrderRoutes);
 const startServer = async () => {
   try {
     await sequelize.authenticate();
-    console.log('✅ Database connected');
+    console.log('Database connected');
     
     await sequelize.sync();
   

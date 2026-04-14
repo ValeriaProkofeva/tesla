@@ -9,6 +9,8 @@ import CatalogCard from './CatalogCard'
 function CatalogPage() {
 
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12;
 
   const categories = [
     { id: 'all', name: 'Все товары' },
@@ -27,6 +29,11 @@ function CatalogPage() {
     { id: 'current-transformer', name: 'Трансформаторы тока' },
     { id: 'cathodic', name: 'Установки катодной защиты' },
   ];
+
+const handleCategoryChange = (categoryId) => {
+    setSelectedCategory(categoryId);
+    setCurrentPage(1); 
+  };
 
   return (
     <>
@@ -48,7 +55,7 @@ function CatalogPage() {
                   <li key={category.id}>
                     <button
                       className={`${styles.filterButton} ${selectedCategory === category.id ? styles.active : ''}`}
-                      onClick={() => setSelectedCategory(category.id)}
+                      onClick={() => handleCategoryChange(category.id)}
                     >
                       {category.name}
                     </button>
@@ -57,8 +64,13 @@ function CatalogPage() {
               </ul>
             </aside>
 
-            <div className={styles.productsContent}>
-              <CatalogCard selectedCategory={selectedCategory} />
+             <div className={styles.productsContent}>
+              <CatalogCard 
+                selectedCategory={selectedCategory}
+                currentPage={currentPage}
+                itemsPerPage={itemsPerPage}
+                onPageChange={setCurrentPage}
+              />
             </div>
           </div>
         </div>

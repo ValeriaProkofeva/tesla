@@ -1,3 +1,7 @@
+/* ============================================
+   ХЕДЕР (АДАПТИВНАЯ ВЕРСИЯ - ИСПРАВЛЕННАЯ)
+   ============================================ */
+
 p {
   color: #2E3335;
   font-family: "Raleway", sans-serif;
@@ -5,83 +9,120 @@ p {
 
 .HeaderContainer {
   max-width: 1720px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
+  padding: clamp(12px, 2.5vw, 20px) clamp(16px, 4vw, 40px);
   position: relative;
+  gap: clamp(16px, 3vw, 30px);
+  /* Убираем flex-wrap: wrap, чтобы элементы не переносились */
+}
+
+/* Левая секция с логотипом */
+.HeaderLeft {
+  flex-shrink: 0;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: clamp(8px, 2vw, 10px);
   cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.logo:hover {
+  opacity: 0.8;
 }
 
 .logoImg {
-  height: 72px;
+  height: clamp(40px, 6vw, 72px);
+  width: auto;
 }
 
 .logoTxt {
-  font-size: 30px;
+  font-size: clamp(18px, 4vw, 30px);
   font-weight: bold;
+  color: #1a2c3e;
+}
+
+/* Центральная навигация - теперь не растягивается */
+.HeaderNav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
 nav {
   display: flex;
-  gap: 60px;
+  gap: clamp(20px, 4vw, 60px);
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .NavTxt {
   cursor: pointer;
   transition: color 0.3s;
+  font-size: clamp(13px, 1.8vw, 16px);
+  font-weight: 500;
+  margin: 0;
+  white-space: nowrap;
 }
 
 .NavTxt:hover {
   color: #4A4FB9;
 }
 
+/* Правая секция с кнопкой/аватаром - фиксированная ширина */
+.HeaderButton {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .HeaderBut {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50px;
-  width: 120px;
+  height: clamp(38px, 6vw, 50px);
+  width: clamp(100px, 15vw, 120px);
   background-color: #4A4FB9;
   color: #FAFAFA;
-  border: 0px solid;
+  border: none;
   border-radius: 20px;
-  font-size: 16px;
+  font-size: clamp(13px, 2vw, 16px);
   font-weight: 500;
   font-family: "Raleway", sans-serif;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
 }
 
 .HeaderBut:hover {
   background-color: #3a3f9e;
+  transform: translateY(-2px);
 }
 
+/* Avatar styles */
 .avatarContainer {
   position: relative;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .avatar {
-  width: 50px;
-  height: 50px;
+  width: clamp(38px, 6vw, 50px);
+  height: clamp(38px, 6vw, 50px);
   border-radius: 50%;
   background: linear-gradient(135deg, #4A4FB9, #6c72d1);
   color: white;
   display: flex;
   align-items: center;
-  
-  font-family: "Raleway", sans-serif;
   justify-content: center;
-  font-size: 20px;
+  font-size: clamp(16px, 3vw, 20px);
   font-weight: bold;
-  
+  font-family: "Raleway", sans-serif;
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -91,14 +132,15 @@ nav {
   box-shadow: 0 4px 12px rgba(74, 79, 185, 0.3);
 }
 
+/* Выпадающее меню */
 .dropdownMenu {
   position: absolute;
-  top: 60px;
+  top: calc(100% + 10px);
   right: 0;
   background: white;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  min-width: 260px;
+  min-width: clamp(220px, 30vw, 260px);
   z-index: 1000;
   animation: slideDown 0.3s ease;
   overflow: hidden;
@@ -116,21 +158,30 @@ nav {
 }
 
 .userInfo {
-  padding: 15px;
+  padding: clamp(12px, 2vw, 15px);
   border-bottom: 1px solid #e0e0e0;
   background: #f8f9fa;
 }
 
 .userName {
   font-weight: bold;
-  font-size: 16px;
+  font-size: clamp(14px, 2vw, 16px);
   color: #2E3335;
   margin-bottom: 5px;
+  word-break: break-word;
 }
 
 .userEmail {
-  font-size: 12px;
+  font-size: clamp(11px, 1.5vw, 12px);
   color: #666;
+  word-break: break-all;
+}
+
+.userRole {
+  font-size: clamp(10px, 1.5vw, 11px);
+  color: #4A4FB9;
+  font-weight: 500;
+  margin-top: 4px;
 }
 
 .menuItems {
@@ -139,12 +190,12 @@ nav {
 
 .menuItem, .menuItemLogout {
   width: 100%;
-  padding: 12px 15px;
+  padding: clamp(10px, 1.5vw, 12px) clamp(12px, 2vw, 15px);
   text-align: left;
   border: none;
   background: white;
   cursor: pointer;
-  font-size: 14px;
+  font-size: clamp(13px, 1.8vw, 14px);
   font-family: "Raleway", sans-serif;
   transition: background-color 0.3s;
 }
@@ -164,4 +215,218 @@ nav {
 
 .menuItemLogout:hover {
   background-color: #ffebee;
+}
+
+/* ============================================
+   АДАПТИВНЫЕ СТИЛИ
+   ============================================ */
+
+/* Планшеты горизонтальные (1024px) */
+@media (max-width: 1024px) {
+  .HeaderContainer {
+    padding: 16px 20px;
+  }
+  
+  nav {
+    gap: 25px;
+  }
+  
+  .NavTxt {
+    font-size: 14px;
+  }
+}
+
+/* Планшеты вертикальные (768px) */
+@media (max-width: 768px) {
+  .HeaderContainer {
+    padding: 12px 16px;
+    /* Уменьшаем отступы, но не переносим */
+  }
+  
+  nav {
+    gap: 20px;
+  }
+  
+  .NavTxt {
+    font-size: 13px;
+    white-space: nowrap; /* Оставляем текст в одну строку */
+  }
+  
+  .logoImg {
+    height: 42px;
+  }
+  
+  .logoTxt {
+    font-size: 22px;
+  }
+  
+  .HeaderBut {
+    width: 100px;
+    height: 40px;
+    font-size: 14px;
+  }
+  
+  .avatar {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+}
+
+/* Мобильные устройства (640px) */
+@media (max-width: 640px) {
+  .HeaderContainer {
+    padding: 10px 12px;
+  }
+  
+  .logoImg {
+    height: 36px;
+  }
+  
+  .logoTxt {
+    font-size: 18px;
+  }
+  
+  nav {
+    gap: 14px;
+  }
+  
+  .NavTxt {
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  
+  .HeaderBut {
+    width: 85px;
+    height: 36px;
+    font-size: 12px;
+    border-radius: 18px;
+  }
+  
+  .avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+  
+  .dropdownMenu {
+    min-width: 220px;
+    right: -5px;
+    top: calc(100% + 8px);
+  }
+}
+
+/* Маленькие мобильные (480px) - здесь навигация может переноситься */
+@media (max-width: 480px) {
+  .HeaderContainer {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .HeaderNav {
+    order: 3;
+    width: 100%;
+    margin-top: 8px;
+  }
+  
+  nav {
+    gap: 12px;
+    justify-content: center;
+  }
+  
+  .NavTxt {
+    font-size: 11px;
+    white-space: nowrap;
+  }
+  
+  .logoImg {
+    height: 32px;
+  }
+  
+  .logoTxt {
+    font-size: 16px;
+  }
+  
+  .HeaderBut {
+    width: 80px;
+    height: 34px;
+    font-size: 12px;
+  }
+  
+  .avatar {
+    width: 34px;
+    height: 34px;
+    font-size: 15px;
+  }
+  
+  .dropdownMenu {
+    min-width: 200px;
+    right: -8px;
+  }
+}
+
+/* Очень большие экраны (1440px+) */
+@media (min-width: 1440px) {
+  .HeaderContainer {
+    padding: 24px 40px;
+  }
+  
+  .logoImg {
+    height: 80px;
+  }
+  
+  .logoTxt {
+    font-size: 32px;
+  }
+  
+  .NavTxt {
+    font-size: 16px;
+  }
+  
+  .HeaderBut {
+    width: 130px;
+    height: 54px;
+    font-size: 16px;
+    border-radius: 27px;
+  }
+  
+  .avatar {
+    width: 54px;
+    height: 54px;
+    font-size: 22px;
+  }
+}
+
+/* Анимация плавного появления */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.HeaderContainer {
+  animation: fadeInDown 0.5s ease;
+}
+
+/* Стили для активной ссылки */
+.NavTxt.active {
+  color: #4A4FB9;
+  font-weight: 600;
+  position: relative;
+}
+
+.NavTxt.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #4A4FB9;
+  border-radius: 1px;
 }

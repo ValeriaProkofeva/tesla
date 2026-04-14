@@ -1,18 +1,84 @@
 .content {
-    background-color: #4A4FB9;
-    width: 800px;
-    height: 160px;
-    border-radius: 20px;
+    background: linear-gradient(135deg, #4A4FB9 0%, #5a60c9 100%);
+    width: min(800px, 90%);
+    max-width: 800px;
+    min-width: 280px;
+    height: auto;
+    min-height: 160px;
+    padding: clamp(20px, 4vw, 30px);
+    border-radius: clamp(16px, 3vw, 20px);
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 4px 20px rgba(74, 79, 185, 0.2);
+    transition: all 0.3s ease;
+}
+
+.content:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(74, 79, 185, 0.3);
 }
 
 .contentTxt {
-    width: 710px;
+    width: 100%;
+    max-width: 710px;
     color: #FAFAFA;
     font-family: "Raleway", sans-serif;
-    font-size: 18px;
+    font-size: clamp(14px, 2.5vw, 18px);
     font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    word-break: break-word;
 }
 
+/* Дополнительные адаптивные улучшения */
+@media (max-width: 768px) {
+    .content {
+        min-height: 140px;
+        padding: 20px;
+    }
+    
+    .contentTxt {
+        font-size: 15px;
+        line-height: 1.45;
+    }
+}
+
+@media (max-width: 640px) {
+    .content {
+        min-height: 120px;
+        border-radius: 16px;
+    }
+    
+    .contentTxt {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+}
+
+@media (max-width: 480px) {
+    .content {
+        min-height: 100px;
+        padding: 16px;
+        border-radius: 14px;
+    }
+    
+    .contentTxt {
+        font-size: 13px;
+        line-height: 1.35;
+    }
+}
+
+@media (min-width: 1440px) {
+    .content {
+        width: 800px;
+        height: 160px;
+    }
+    
+    .contentTxt {
+        font-size: 18px;
+        width: 710px;
+    }
+}

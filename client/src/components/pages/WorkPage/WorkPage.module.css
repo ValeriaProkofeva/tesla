@@ -1,0 +1,168 @@
+.workPage {
+  padding: 120px 0 80px;
+  min-height: calc(100vh - 300px);
+  font-family: "Raleway", sans-serif;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.pageTitle {
+  font-size: clamp(32px, 5vw, 42px);
+  font-weight: 600;
+  color: #1a2c3e;
+  margin-bottom: 16px;
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+}
+
+.pageSubtitle {
+  font-size: clamp(14px, 2vw, 18px);
+  color: #6c7a89;
+  text-align: center;
+  margin-bottom: 48px;
+  font-family: "Raleway", sans-serif;
+}
+
+/* Сетка работ */
+.worksGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 32px;
+}
+
+/* Карточка работы */
+.workCard {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid #e9ecef;
+  display: flex;
+  flex-direction: column;
+}
+
+.workCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  border-color: #4A4FB9;
+}
+
+.workImage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #f8fafc;
+}
+
+.workImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.workCard:hover .workImage img {
+  transform: scale(1.05);
+}
+
+.workCategory {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: #4A4FB9;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: "Raleway", sans-serif;
+}
+
+.workContent {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.workTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a2c3e;
+  line-height: 1.4;
+  margin: 0;
+  flex: 1;
+  font-family: "Raleway", sans-serif;
+}
+
+.detailsButton {
+  background: none;
+  border: none;
+  color: #4A4FB9;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s ease;
+  font-family: "Raleway", sans-serif;
+  white-space: nowrap;
+}
+
+.detailsButton:hover {
+  color: #3a3f9e;
+  gap: 8px;
+}
+
+.detailsButton:hover::after {
+  transform: translateX(4px);
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+  .worksGrid {
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .workPage {
+    padding: 100px 0 60px;
+  }
+  
+  .worksGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .workContent {
+    padding: 16px;
+  }
+  
+  .workTitle {
+    font-size: 14px;
+  }
+  
+  .detailsButton {
+    font-size: 13px;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .workContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .detailsButton {
+    white-space: normal;
+  }
+}

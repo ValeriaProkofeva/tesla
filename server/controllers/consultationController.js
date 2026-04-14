@@ -2,13 +2,11 @@ import Consultation from '../models/Consultation.js';
 import User from '../models/User.js';
 import { Op } from 'sequelize';
 
-// Создание новой заявки
 export const createConsultation = async (req, res) => {
   try {
     const { name, phone } = req.body;
     const userId = req.user.id;
 
-    // Валидация
     if (!name || !phone) {
       return res.status(400).json({ error: 'Все поля обязательны для заполнения' });
     }
@@ -21,7 +19,6 @@ export const createConsultation = async (req, res) => {
       return res.status(400).json({ error: 'Имя не должно превышать 30 символов' });
     }
 
-    // Простая валидация телефона (российские номера)
     const phoneRegex = /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
     if (!phoneRegex.test(phone.replace(/\s/g, ''))) {
       return res.status(400).json({ error: 'Введите корректный номер телефона' });
@@ -50,7 +47,6 @@ export const createConsultation = async (req, res) => {
   }
 };
 
-// Получение заявок пользователя
 export const getUserConsultations = async (req, res) => {
   try {
     const consultations = await Consultation.findAll({
@@ -65,7 +61,6 @@ export const getUserConsultations = async (req, res) => {
   }
 };
 
-// Получение всех заявок (только для админа)
 export const getAllConsultations = async (req, res) => {
   try {
     const consultations = await Consultation.findAll({
@@ -86,7 +81,6 @@ export const getAllConsultations = async (req, res) => {
   }
 };
 
-// Обновление статуса заявки (только для админа)
 export const updateConsultationStatus = async (req, res) => {
   try {
     const { id } = req.params;
@@ -118,7 +112,6 @@ export const updateConsultationStatus = async (req, res) => {
   }
 };
 
-// Удаление заявки (только для админа)
 export const deleteConsultation = async (req, res) => {
   try {
     const { id } = req.params;

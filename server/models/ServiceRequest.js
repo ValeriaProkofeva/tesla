@@ -9,7 +9,7 @@ const ServiceRequest = sequelize.define('ServiceRequest', {
     allowNull: false,
   },
   serviceType: {
-    type: DataTypes.STRING(50),  // Изменено с ENUM на STRING
+    type: DataTypes.STRING(50),  
     allowNull: false,
   },
   serviceName: {
@@ -25,7 +25,7 @@ const ServiceRequest = sequelize.define('ServiceRequest', {
     allowNull: false,
   },
   status: {
-    type: DataTypes.STRING(20),  // Изменено с ENUM на STRING
+    type: DataTypes.STRING(20),  
     defaultValue: 'new',
     allowNull: false,
   },

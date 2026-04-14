@@ -304,6 +304,7 @@ const ProductManager = () => {
                     )}
                   </td>
                   <td>
+                    <div className={styles.productActions}>
                     <button
                       onClick={() => handleEdit(product)}
                       className={styles.editButton}
@@ -316,6 +317,7 @@ const ProductManager = () => {
                     >
                       Удалить
                     </button>
+                    </div>
                   </td>
                 </tr>
               ))}

@@ -478,7 +478,119 @@
   margin-bottom: 20px;
   font-family: "Raleway", sans-serif;
 }
+/* Стили для модального окна работ */
+.modalWorkLayout {
+  display: flex;
+  gap: 32px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
 
+.modalWorkImage {
+  flex: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f8fafc;
+}
+
+.modalWorkImage img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.modalWorkInfo {
+  flex: 1;
+}
+
+.modalWorkDescription {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #4a5568;
+  margin-bottom: 24px;
+  font-family: "Raleway", sans-serif;
+}
+
+.workDetails {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.detailRow {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.detailRow:last-child {
+  margin-bottom: 0;
+}
+
+.detailLabel {
+  width: 100px;
+  font-weight: 600;
+  color: #4a5568;
+  font-family: "Raleway", sans-serif;
+}
+
+.detailValue {
+  flex: 1;
+  color: #1a2c3e;
+  font-family: "Raleway", sans-serif;
+}
+
+.workResults {
+  margin-bottom: 20px;
+}
+
+.workResults h4,
+.workTechnologies h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a2c3e;
+  margin-bottom: 8px;
+  font-family: "Raleway", sans-serif;
+}
+
+.workResults p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #4a5568;
+  font-family: "Raleway", sans-serif;
+}
+
+.techTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.techTag {
+  background: #eef2ff;
+  color: #4A4FB9;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: "Raleway", sans-serif;
+}
+
+@media (max-width: 768px) {
+  .modalWorkLayout {
+    flex-direction: column;
+  }
+  
+  .modalWorkImage {
+    max-height: 250px;
+  }
+  
+  .modalWorkImage img {
+    height: 100%;
+    object-fit: cover;
+  }
+}
 /* Анимации */
 @keyframes fadeIn {
   from {

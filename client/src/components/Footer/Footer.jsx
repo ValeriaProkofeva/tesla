@@ -57,7 +57,7 @@ function Footer() {
   };
 
   const navigateToWorks = () => {
-    alert('Страница "Наши работы" в разработке');
+    navigate('/works');
   };
 
   return (

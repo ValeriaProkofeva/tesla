@@ -4,10 +4,22 @@ import { Op } from 'sequelize';
 // Получить все товары
 export const getAllProducts = async (req, res) => {
   try {
-    const products = await Product.findAll({
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 8;
+    const offset = (page - 1) * limit;
+    
+    const { count, rows: products } = await Product.findAndCountAll({
       order: [['createdAt', 'DESC']],
+      limit,
+      offset,
     });
-    res.json({ products });
+    
+    res.json({
+      products,
+      total: count,
+      page,
+      totalPages: Math.ceil(count / limit),
+    });
   } catch (error) {
     console.error('Get products error:', error);
     res.status(500).json({ error: 'Ошибка при получении товаров' });
@@ -18,11 +30,23 @@ export const getAllProducts = async (req, res) => {
 export const getProductsByCategory = async (req, res) => {
   try {
     const { category } = req.params;
-    const products = await Product.findAll({
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 8;
+    const offset = (page - 1) * limit;
+    
+    const { count, rows: products } = await Product.findAndCountAll({
       where: { category },
       order: [['createdAt', 'DESC']],
+      limit,
+      offset,
     });
-    res.json({ products });
+    
+    res.json({
+      products,
+      total: count,
+      page,
+      totalPages: Math.ceil(count / limit),
+    });
   } catch (error) {
     console.error('Get products by category error:', error);
     res.status(500).json({ error: 'Ошибка при получении товаров' });

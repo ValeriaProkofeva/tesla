@@ -3,7 +3,7 @@ import { initialProducts } from './initialProducts.js';
 
 export const seedProducts = async () => {
   try {
-    console.log('🌱 Проверка наличия товаров в базе...');
+    console.log(' Проверка наличия товаров в базе...');
     
     let addedCount = 0;
     let skippedCount = 0;
@@ -16,15 +16,15 @@ export const seedProducts = async () => {
       if (!existingProduct) {
         await Product.create(productData);
         addedCount++;
-        console.log(`✅ Добавлен: ${productData.name}`);
+        console.log(` Добавлен: ${productData.name}`);
       } else {
         skippedCount++;
-        console.log(`⏭️ Уже существует: ${productData.name}`);
+        console.log(`⏭ Уже существует: ${productData.name}`);
       }
     }
     
-    console.log(`📊 Итог: добавлено ${addedCount}, пропущено ${skippedCount}`);
+    console.log(` Итог: добавлено ${addedCount}, пропущено ${skippedCount}`);
   } catch (error) {
-    console.error('❌ Ошибка при заполнении товаров:', error);
+    console.error(' Ошибка при заполнении товаров:', error);
   }
 };

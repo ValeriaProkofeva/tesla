@@ -9,6 +9,7 @@ import CatalogPage from './components/pages/CatalogPage/CatalogPage';
 import ServicesPage from './components/pages/Services/ServicesPage';
 import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
 import { ToastProvider } from './components/context/ToastContext';
+import WorkPage from './components/pages/WorkPage/WorkPage';
 
 function AppRoutes() {
   const { user, loading } = useAuth();
@@ -23,6 +24,7 @@ function AppRoutes() {
       <Route path="/catalog" element={<CatalogPage />} />
       <Route path="/services" element={<ServicesPage />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      <Route path="/works" element={<WorkPage />} />
       <Route 
         path="/cabinet" 
         element={

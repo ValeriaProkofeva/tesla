@@ -1,25 +1,36 @@
+/* ============================================
+   ФУТЕР (АДАПТИВНАЯ ВЕРСИЯ)
+   ============================================ */
+
 .FooterContainer {
   max-width: 1720px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   font-family: "Raleway", sans-serif;
-  margin-top: 150px;
-  padding: 0 20px;
+  margin-top: clamp(60px, 10vw, 150px);
+  padding: 0 clamp(16px, 4vw, 40px);
+  gap: clamp(20px, 4vw, 40px);
+  flex-wrap: wrap;
 }
 
+/* Левая секция */
 .FooterLeft {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: clamp(8px, 2vw, 10px);
+  flex: 1;
+  min-width: 200px;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: clamp(8px, 2vw, 10px);
   cursor: pointer;
   transition: opacity 0.3s;
+  flex-wrap: wrap;
 }
 
 .logo:hover {
@@ -27,32 +38,46 @@
 }
 
 .logoImg {
-  height: 72px;
+  height: clamp(48px, 8vw, 72px);
+  width: auto;
 }
 
 .logoTxt {
-  font-size: 30px;
+  font-size: clamp(20px, 5vw, 30px);
   font-weight: bold;
+  color: #1a2c3e;
 }
 
 .contacts {
-  margin-top: 20px;
+  margin-top: clamp(12px, 3vw, 20px);
 }
 
 .contacts p {
   margin: 5px 0;
   color: #2E3335;
+  font-size: clamp(12px, 2vw, 14px);
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+/* Центральная навигация */
+.FooterNav {
+  flex: 1;
+  min-width: 200px;
 }
 
 nav {
   display: flex;
-  gap: 60px;
+  gap: clamp(20px, 5vw, 60px);
+  flex-wrap: wrap;
 }
 
 .NavTxt {
   cursor: pointer;
   transition: color 0.3s;
   margin: 0;
+  font-size: clamp(13px, 2vw, 16px);
+  white-space: nowrap;
 }
 
 .NavTxt:hover {
@@ -64,44 +89,48 @@ nav {
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
+  flex: 1;
+  min-width: 120px;
 }
 
+/* Кнопка входа */
 .HeaderBut {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50px;
-  width: 120px;
+  height: clamp(40px, 6vw, 50px);
+  width: clamp(100px, 15vw, 120px);
   background-color: #4A4FB9;
   color: #FAFAFA;
-  border: 0px solid;
+  border: none;
   border-radius: 20px;
-  font-size: 16px;
+  font-size: clamp(13px, 2vw, 16px);
   font-weight: 500;
   font-family: "Raleway", sans-serif;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
 }
 
 .HeaderBut:hover {
   background-color: #3a3f9e;
+  transform: translateY(-2px);
 }
 
-/* Avatar styles (такие же как в хедере) */
+/* Avatar styles */
 .avatarContainer {
   position: relative;
 }
 
 .avatar {
-  width: 50px;
-  height: 50px;
+  width: clamp(40px, 6vw, 50px);
+  height: clamp(40px, 6vw, 50px);
   border-radius: 50%;
   background: linear-gradient(135deg, #4A4FB9, #6c72d1);
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
+  font-size: clamp(16px, 3vw, 20px);
   font-weight: bold;
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
@@ -112,6 +141,7 @@ nav {
   box-shadow: 0 4px 12px rgba(74, 79, 185, 0.3);
 }
 
+/* Выпадающее меню */
 .dropdownMenu {
   position: absolute;
   bottom: 60px;
@@ -119,7 +149,7 @@ nav {
   background: white;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  min-width: 260px;
+  min-width: clamp(220px, 30vw, 260px);
   z-index: 1000;
   animation: slideUp 0.3s ease;
   overflow: hidden;
@@ -137,26 +167,28 @@ nav {
 }
 
 .userInfo {
-  padding: 15px;
+  padding: clamp(12px, 2vw, 15px);
   border-bottom: 1px solid #e0e0e0;
   background: #f8f9fa;
 }
 
 .userName {
   font-weight: bold;
-  font-size: 16px;
+  font-size: clamp(14px, 2vw, 16px);
   color: #2E3335;
   margin-bottom: 5px;
+  word-break: break-word;
 }
 
 .userEmail {
-  font-size: 12px;
+  font-size: clamp(11px, 1.5vw, 12px);
   color: #666;
   margin-bottom: 4px;
+  word-break: break-all;
 }
 
 .userRole {
-  font-size: 11px;
+  font-size: clamp(10px, 1.5vw, 11px);
   color: #4A4FB9;
   font-weight: 500;
 }
@@ -167,12 +199,12 @@ nav {
 
 .menuItem, .menuItemLogout {
   width: 100%;
-  padding: 12px 15px;
+  padding: clamp(10px, 1.5vw, 12px) clamp(12px, 2vw, 15px);
   text-align: left;
   border: none;
   background: white;
   cursor: pointer;
-  font-size: 14px;
+  font-size: clamp(13px, 1.8vw, 14px);
   font-family: "Raleway", sans-serif;
   transition: background-color 0.3s;
 }
@@ -194,31 +226,68 @@ nav {
   background-color: #ffebee;
 }
 
+/* Копирайт */
 .copy {
   display: flex;
   justify-content: center;
-  font-size: 14px;
-  margin-top: 40px;
-  padding-bottom: 20px;
+  text-align: center;
+  font-size: clamp(11px, 2vw, 14px);
+  margin-top: clamp(30px, 6vw, 40px);
+  padding-bottom: clamp(16px, 4vw, 20px);
   color: #666;
+  font-family: "Raleway", sans-serif;
 }
 
-/* Адаптивность для мобильных устройств */
+/* ============================================
+   АДАПТИВНЫЕ СТИЛИ
+   ============================================ */
+
+/* Планшеты горизонтальные (1024px) */
+@media (max-width: 1024px) {
+  .FooterContainer {
+    gap: 30px;
+  }
+  
+  nav {
+    gap: 30px;
+  }
+  
+  .NavTxt {
+    white-space: normal;
+    text-align: center;
+  }
+}
+
+/* Планшеты вертикальные (768px) */
 @media (max-width: 768px) {
   .FooterContainer {
     flex-direction: column;
-    gap: 30px;
+    gap: 32px;
     text-align: center;
+    margin-top: 80px;
   }
   
   .FooterLeft {
     align-items: center;
+    text-align: center;
+  }
+  
+  .logo {
+    justify-content: center;
+  }
+  
+  .FooterNav {
+    width: 100%;
   }
   
   nav {
     flex-direction: column;
-    gap: 15px;
+    gap: 16px;
     align-items: center;
+  }
+  
+  .NavTxt {
+    white-space: normal;
   }
   
   .FooterRight {
@@ -229,6 +298,7 @@ nav {
     bottom: 60px;
     right: 50%;
     transform: translateX(50%);
+    left: auto;
   }
   
   @keyframes slideUp {
@@ -241,4 +311,180 @@ nav {
       transform: translateX(50%) translateY(0);
     }
   }
+}
+
+/* Мобильные устройства (640px) */
+@media (max-width: 640px) {
+  .FooterContainer {
+    padding: 0 16px;
+    gap: 28px;
+    margin-top: 60px;
+  }
+  
+  .FooterLeft {
+    min-width: auto;
+  }
+  
+  .logoImg {
+    height: 48px;
+  }
+  
+  .logoTxt {
+    font-size: 22px;
+  }
+  
+  .contacts p {
+    font-size: 12px;
+  }
+  
+  .FooterNav {
+    min-width: auto;
+  }
+  
+  nav {
+    gap: 14px;
+  }
+  
+  .NavTxt {
+    font-size: 14px;
+  }
+  
+  .HeaderBut {
+    width: 110px;
+    height: 42px;
+    font-size: 14px;
+  }
+  
+  .avatar {
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
+  }
+  
+  .dropdownMenu {
+    min-width: 240px;
+    bottom: 52px;
+  }
+  
+  .copy {
+    margin-top: 32px;
+    padding-bottom: 16px;
+    font-size: 11px;
+  }
+}
+
+/* Маленькие мобильные (480px) */
+@media (max-width: 480px) {
+  .FooterContainer {
+    padding: 0 12px;
+    gap: 24px;
+    margin-top: 50px;
+  }
+  
+  .logoImg {
+    height: 40px;
+  }
+  
+  .logoTxt {
+    font-size: 20px;
+  }
+  
+  .contacts p {
+    font-size: 11px;
+  }
+  
+  .NavTxt {
+    font-size: 13px;
+  }
+  
+  .HeaderBut {
+    width: 100px;
+    height: 38px;
+    font-size: 13px;
+  }
+  
+  .avatar {
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+  }
+  
+  .dropdownMenu {
+    min-width: 220px;
+    bottom: 48px;
+  }
+  
+  .userInfo {
+    padding: 10px 12px;
+  }
+  
+  .userName {
+    font-size: 14px;
+  }
+  
+  .userEmail {
+    font-size: 10px;
+  }
+  
+  .menuItem, .menuItemLogout {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+  
+  .copy {
+    margin-top: 28px;
+    padding-bottom: 14px;
+    font-size: 10px;
+  }
+}
+
+/* Очень большие экраны (1440px+) */
+@media (min-width: 1440px) {
+  .FooterContainer {
+    padding: 0 40px;
+  }
+  
+  .logoImg {
+    height: 80px;
+  }
+  
+  .logoTxt {
+    font-size: 32px;
+  }
+  
+  .contacts p {
+    font-size: 15px;
+  }
+  
+  .NavTxt {
+    font-size: 16px;
+  }
+  
+  .HeaderBut {
+    width: 130px;
+    height: 52px;
+    font-size: 16px;
+  }
+  
+  .avatar {
+    width: 52px;
+    height: 52px;
+    font-size: 22px;
+  }
+}
+
+/* Анимация плавного появления */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.FooterContainer {
+  animation: fadeInUp 0.5s ease;
 }

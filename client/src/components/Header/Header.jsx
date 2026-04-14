@@ -56,7 +56,7 @@ function Header() {
   };
 
   const navigateToWorks = () => {
-    alert('Страница в разработке');
+    navigate('/works');
   };
 
   return (

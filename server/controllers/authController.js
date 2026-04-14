@@ -11,7 +11,6 @@ const generateToken = (user) => {
   );
 };
 
-// Проверка наличия специального символа в пароле
 const hasSpecialChar = (password) => {
   const specialChars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
   return specialChars.test(password);
@@ -21,7 +20,6 @@ export const register = async (req, res) => {
   try {
     const { name, email, password, confirmPassword } = req.body;
 
-    // Валидация
     if (!name || !email || !password || !confirmPassword) {
       return res.status(400).json({ error: 'Все поля обязательны для заполнения' });
     }
