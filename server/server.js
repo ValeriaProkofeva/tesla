@@ -46,6 +46,15 @@ app.get(/^\/(?!api).*/, (req, res) => {
 
 const io = initSocket(server);
 
+app.get('/health', async (req, res) => {
+    try {
+        res.status(200).send('OK');
+    } catch (error) {
+        console.error('Health check failed:', error);
+        res.status(503).send('Service Unavailable');
+    }
+});
+
 const startServer = async () => {
   try {
     await sequelize.authenticate();
