@@ -15,7 +15,7 @@
     "socket.io-client": "^4.5.4",
     "crypto-js": "^4.2.0",
     "vite": "^5.0.8",
-    "@vitejs/plugin-react": "^4.2.1"
+     "@vitejs/plugin-react": "^4.2.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
