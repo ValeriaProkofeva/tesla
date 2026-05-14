@@ -677,6 +677,138 @@
   white-space: nowrap;
 }
 
+.userActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.passwordButton {
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  cursor: pointer;
+  font-family: "Raleway", sans-serif;
+  transition: background-color 0.2s;
+}
+
+.passwordButton:hover {
+  background-color: #f57c00;
+}
+
+.blockButton {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  cursor: pointer;
+  font-family: "Raleway", sans-serif;
+  transition: background-color 0.2s;
+}
+
+.blockButton:hover {
+  background-color: #d32f2f;
+}
+
+.unblockButton {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  cursor: pointer;
+  font-family: "Raleway", sans-serif;
+  transition: background-color 0.2s;
+}
+
+.unblockButton:hover {
+  background-color: #45a049;
+}
+
+.blockedRow {
+  background-color: #fff5f5;
+  opacity: 0.8;
+}
+
+.adminBadge {
+  display: inline-block;
+  padding: 4px 10px;
+  background-color: #4A4FB9;
+  color: white;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.userBadge {
+  display: inline-block;
+  padding: 4px 10px;
+  background-color: #e9ecef;
+  color: #4a5568;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.activeBadge {
+  display: inline-block;
+  padding: 4px 10px;
+  background-color: #e8f5e9;
+  color: #4caf50;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.blockedBadge {
+  display: inline-block;
+  padding: 4px 10px;
+  background-color: #ffebee;
+  color: #f44336;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.editInput {
+  padding: 6px 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 13px;
+  width: 100%;
+  min-width: 140px;
+}
+
+.editSelect {
+  padding: 6px 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 13px;
+  background: white;
+  cursor: pointer;
+}
+
+/* Стили для модального окна подтверждения */
+.modalMessage {
+  font-size: 14px;
+  color: #4a5568;
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+}
+
+.formButtons {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
 /* ============================================
    АДАПТИВНЫЕ СТИЛИ
    ============================================ */

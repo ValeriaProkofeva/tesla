@@ -20,7 +20,12 @@ p{
   pointer-events: auto;
 }
 
-/* Опционально: добавляем стили для скролла */
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
 @media (max-width: 768px) {
   .toasts-container {
     top: 16px;

@@ -32,6 +32,54 @@ const Product = sequelize.define('Product', {
     type: DataTypes.TEXT,
     allowNull: false,
   },
+
+  powerMin: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+    comment: 'Минимальная мощность в кВА',
+  },
+  powerMax: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+    comment: 'Максимальная мощность в кВА',
+  },
+  
+  voltageHV: {
+    type: DataTypes.STRING(50),
+    allowNull: true,
+    comment: 'Напряжение ВН: 0.4, 6, 10, 20, 35 кВ',
+  },
+  
+  voltageLV: {
+    type: DataTypes.STRING(50),
+    allowNull: true,
+    comment: 'Напряжение НН: 0.23, 0.4, 0.69, 6, 10 кВ',
+  },
+  
+  insulationType: {
+    type: DataTypes.ENUM('oil', 'dry', 'hermetic'),
+    allowNull: true,
+    comment: 'Тип изоляции: масляный, сухой, герметичный',
+  },
+  
+  installationType: {
+    type: DataTypes.ENUM('outdoor', 'indoor'),
+    allowNull: true,
+    comment: 'Тип установки: наружная, внутренняя',
+  },
+  
+  efficiencyClass: {
+    type: DataTypes.STRING(20),
+    allowNull: true,
+    comment: 'Класс энергоэффективности: Х2К2, Х3К2',
+  },
+  
+  industry: {
+    type: DataTypes.STRING(100),
+    allowNull: true,
+    comment: 'Сфера применения: энергетика, промышленность, нефтегаз, ЖД, строительство',
+  },
+  
   specifications: {
     type: DataTypes.TEXT,
     allowNull: true,

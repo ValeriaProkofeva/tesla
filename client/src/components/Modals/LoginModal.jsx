@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './Modal.module.css';
+import PasswordInput from '../Common/PasswordInput';
 import { useAuth } from '../context/AuthContext';
 
 const LoginModal = ({ isOpen, onClose, onSwitchToRegister }) => {
@@ -29,7 +30,7 @@ const LoginModal = ({ isOpen, onClose, onSwitchToRegister }) => {
     setLoading(true);
     setApiError('');
     const result = await login(email, password);
-    
+
     if (result.success) {
       onClose();
     } else {
@@ -43,9 +44,9 @@ const LoginModal = ({ isOpen, onClose, onSwitchToRegister }) => {
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
         <button className={styles.closeButton} onClick={onClose}>×</button>
         <h2 className={styles.modalTitle}>Вход</h2>
-        
+
         {apiError && <div className={styles.errorMessage}>{apiError}</div>}
-        
+
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.formGroup}>
             <label>Email</label>
@@ -58,24 +59,23 @@ const LoginModal = ({ isOpen, onClose, onSwitchToRegister }) => {
             />
             {errors.email && <div className={styles.errorText}>{errors.email}</div>}
           </div>
-          
+
           <div className={styles.formGroup}>
-            <label>Пароль</label>
-            <input
-              type="password"
+            <PasswordInput
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className={errors.password ? styles.error : ''}
               placeholder="••••••"
+              label="Пароль"
+              error={errors.password}
             />
             {errors.password && <div className={styles.errorText}>{errors.password}</div>}
           </div>
-          
+
           <button type="submit" className={styles.submitButton} disabled={loading}>
             {loading ? 'Вход...' : 'Войти'}
           </button>
         </form>
-        
+
         <div className={styles.switchText}>
           Нет аккаунта?
           <span className={styles.switchLink} onClick={onSwitchToRegister}>

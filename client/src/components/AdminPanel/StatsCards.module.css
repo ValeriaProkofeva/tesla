@@ -1,0 +1,352 @@
+/* ============================================
+   СТАТИСТИКА - СДЕРЖАННЫЙ КОРПОРАТИВНЫЙ СТИЛЬ
+   ============================================ */
+
+.statsContainer {
+  animation: fadeIn 0.3s ease;
+  margin-bottom: 24px;
+}
+
+/* Основные карточки */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.statCard {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e9ecef;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.statCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-color: #cbd5e1;
+}
+
+.cardIcon {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 28px;
+  opacity: 0.15;
+}
+
+.cardContent {
+  position: relative;
+  z-index: 1;
+}
+
+.cardValue {
+  font-size: 32px;
+  font-weight: 600;
+  color: #1a2c3e;
+  margin-bottom: 4px;
+  font-family: "Raleway", sans-serif;
+  letter-spacing: -0.5px;
+}
+
+.cardTitle {
+  font-size: 13px;
+  font-weight: 500;
+  color: #6c7a89;
+  margin-bottom: 4px;
+  font-family: "Raleway", sans-serif;
+}
+
+.cardDetail {
+  font-size: 11px;
+  color: #9ca3af;
+  font-family: "Raleway", sans-serif;
+}
+
+.cardProgress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #e9ecef;
+}
+
+.cardProgress::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--progress-width, 0%);
+  background: #4A4FB9;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+/* Блок распределения по статусам */
+.statusBreakdown {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #e9ecef;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.breakdownTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a2c3e;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e9ecef;
+  font-family: "Raleway", sans-serif;
+}
+
+/* Прогресс-бары */
+.statusBarItem {
+  margin-bottom: 14px;
+}
+
+.statusBarLabel {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-size: 12px;
+  color: #4a5568;
+  font-family: "Raleway", sans-serif;
+}
+
+.statusBarTrack {
+  height: 6px;
+  background: #edf2f7;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.statusBarFill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+.fillNew {
+  background: #4A4FB9;
+}
+
+.fillProcessing {
+  background: #6c7a89;
+}
+
+.fillCompleted {
+  background: #10b981;
+}
+
+/* Блок активности пользователей */
+.activitySection {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #e9ecef;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.activityTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a2c3e;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e9ecef;
+  font-family: "Raleway", sans-serif;
+}
+
+.activityBar {
+  display: flex;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  background: #edf2f7;
+}
+
+.activityActive {
+  background: #10b981;
+  transition: width 0.5s ease;
+}
+
+.activityActive span {
+  display: none;
+}
+
+.activityBlocked {
+  background: #6c7a89;
+  transition: width 0.5s ease;
+}
+
+.activityBlocked span {
+  display: none;
+}
+
+.activityLegend {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #4a5568;
+  font-family: "Raleway", sans-serif;
+}
+
+.legendColorActive {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: #10b981;
+}
+
+.legendColorBlocked {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: #6c7a89;
+}
+
+/* Статистика пользователей */
+.usersStatsSection {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #e9ecef;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.sectionTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a2c3e;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e9ecef;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Raleway", sans-serif;
+}
+
+.sectionIcon {
+  font-size: 18px;
+  opacity: 0.7;
+}
+
+.usersStatsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.userStatCard {
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  transition: all 0.2s ease;
+  border: 1px solid #e9ecef;
+}
+
+.userStatCard:hover {
+  background: #ffffff;
+  border-color: #cbd5e1;
+}
+
+.userStatIcon {
+  font-size: 24px;
+  margin-bottom: 8px;
+  opacity: 0.7;
+}
+
+.userStatValue {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1a2c3e;
+  margin-bottom: 4px;
+  font-family: "Raleway", sans-serif;
+}
+
+.userStatLabel {
+  font-size: 12px;
+  font-weight: 500;
+  color: #6c7a89;
+  font-family: "Raleway", sans-serif;
+}
+
+.userStatPercent {
+  font-size: 10px;
+  color: #9ca3af;
+  margin-top: 4px;
+  font-family: "Raleway", sans-serif;
+}
+
+/* Анимация */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   АДАПТИВНОСТЬ
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  
+  .usersStatsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .usersStatsGrid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .cardValue {
+    font-size: 28px;
+  }
+  
+  .userStatValue {
+    font-size: 22px;
+  }
+  
+  .activityLegend {
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+}

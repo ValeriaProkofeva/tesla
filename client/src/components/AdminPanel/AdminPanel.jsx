@@ -6,6 +6,8 @@ import styles from './AdminPanel.module.css';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import ProductManager from './ProductManager';
+import UserManager from './UserManager';
+import StatsCards from './StatsCards';
 
 const AdminPanel = () => {
   const { user, logout } = useAuth();
@@ -20,12 +22,26 @@ const AdminPanel = () => {
   const [equipmentOrders, setEquipmentOrders] = useState([]);
   const [editingOrder, setEditingOrder] = useState(null);
   const [orderCommentText, setOrderCommentText] = useState('');
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     fetchConsultations();
     fetchServiceRequests();
     fetchEquipmentOrders();
+    fetchUsers();
   }, []);
+
+  const fetchUsers = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.get('http://localhost:5000/api/admin/users', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setUsers(response.data.users);
+    } catch (error) {
+      console.error('Error fetching users:', error);
+    }
+  };
 
   const fetchEquipmentOrders = async () => {
     try {
@@ -259,6 +275,12 @@ const AdminPanel = () => {
 
             <nav className={styles.sidebarNav}>
               <button
+                className={`${styles.sidebarItem} ${activeTab === 'users' ? styles.active : ''}`}
+                onClick={() => setActiveTab('users')}
+              >
+                <span className={styles.sidebarIcon}>Пользователи</span>
+              </button>
+              <button
                 className={`${styles.sidebarItem} ${activeTab === 'consultations' ? styles.active : ''}`}
                 onClick={() => setActiveTab('consultations')}
               >
@@ -291,63 +313,45 @@ const AdminPanel = () => {
               >
                 <span className={styles.sidebarIcon}>Товары</span>
               </button>
-             
+
             </nav>
           </div>
 
           {/* Основной контент */}
           <div className={styles.mainContent}>
-            {message.text && (
-              <div className={`${styles.message} ${styles[message.type]}`}>
-                {message.text}
-              </div>
-            )}
+  {message.text && (
+    <div className={`${styles.message} ${styles[message.type]}`}>
+      {message.text}
+    </div>
+  )}
 
             {/* Статистика */}
             {activeTab === 'consultations' && (
-              <div className={styles.statsSection}>
-                <div className={styles.statsGrid}>
-                  <div className={styles.statCard}>
-                    <div className={styles.statValue}>{stats.consultations.total}</div>
-                    <div className={styles.statLabel}>Всего заявок</div>
-                  </div>
-                  <div className={styles.statCard}>
-                    <div className={styles.statValue}>{stats.consultations.new}</div>
-                    <div className={styles.statLabel}>Новых</div>
-                  </div>
-                  <div className={styles.statCard}>
-                    <div className={styles.statValue}>{stats.consultations.processing}</div>
-                    <div className={styles.statLabel}>В обработке</div>
-                  </div>
-                  <div className={styles.statCard}>
-                    <div className={styles.statValue}>{stats.consultations.completed}</div>
-                    <div className={styles.statLabel}>Завершено</div>
-                  </div>
-                </div>
-              </div>
+              <StatsCards
+                type="consultations"
+                consultations={stats.consultations}
+              />
             )}
 
             {activeTab === 'services' && (
-              <div className={styles.statsSection}>
-                <div className={styles.statsGrid}>
-                  <div className={styles.statCard}>
-                    <div className={styles.statValue}>{stats.services.total}</div>
-                    <div className={styles.statLabel}>Всего заявок</div>
-                  </div>
-                  <div className={styles.statCard}>
-                    <div className={styles.statValue}>{stats.services.new}</div>
-                    <div className={styles.statLabel}>Новых</div>
-                  </div>
-                  <div className={styles.statCard}>
-                    <div className={styles.statValue}>{stats.services.processing}</div>
-                    <div className={styles.statLabel}>В обработке</div>
-                  </div>
-                  <div className={styles.statCard}>
-                    <div className={styles.statValue}>{stats.services.completed}</div>
-                    <div className={styles.statLabel}>Завершено</div>
-                  </div>
-                </div>
-              </div>
+              <StatsCards
+                type="services"
+                services={stats.services}
+              />
+            )}
+
+            {activeTab === 'equipment' && (
+              <StatsCards
+                type="equipment"
+                equipment={stats.equipment}
+              />
+            )}
+
+            {activeTab === 'users' && (
+              <StatsCards
+                type="users"
+                users={users}
+              />
             )}
 
             {/* Таблица заявок на консультацию */}
@@ -648,6 +652,7 @@ const AdminPanel = () => {
                 )}
               </div>
             )}
+            {activeTab === 'users' && <UserManager />}
             {activeTab === 'products' && <ProductManager />}
           </div>
         </div>

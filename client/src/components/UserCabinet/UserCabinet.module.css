@@ -1,4 +1,3 @@
-/* Основные стили */
 .cabinetContainer {
   max-width: 1400px;
   margin: 0 auto;
@@ -16,7 +15,6 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
-/* Sidebar */
 .sidebar {
   width: 280px;
   background: #f8fafc;
@@ -116,14 +114,12 @@
   color: #ffffff;
 }
 
-/* Main Content */
 .mainContent {
   flex: 1;
   padding: 32px;
   min-width: 0;
 }
 
-/* Общие заголовки */
 .sectionTitle {
   font-size: 24px;
   font-weight: 600;
@@ -144,7 +140,7 @@
   font-family: "Raleway", sans-serif;
 }
 
-/* Профиль */
+
 .profileInfo {
   display: flex;
   flex-direction: column;
@@ -190,7 +186,6 @@
   background-color: #3a3f9e;
 }
 
-/* Форма редактирования */
 .editForm {
   display: flex;
   flex-direction: column;
@@ -270,7 +265,6 @@
   background-color: #e9ecef;
 }
 
-/* Список заявок */
 .requestsList {
   display: flex;
   flex-direction: column;
@@ -386,7 +380,430 @@
   border: 1px solid #fcc5c5;
 }
 
-/* Responsive */
+.userChatContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 500px;
+}
+
+.userChatHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.totalUnreadBadge {
+  background: #4A4FB9;
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.emptyChats {
+  text-align: center;
+  padding: 60px 20px;
+  background: #f8fafc;
+  border-radius: 16px;
+  color: #6c7a89;
+}
+
+.emptyIcon {
+  font-size: 64px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.emptyHint {
+  font-size: 13px;
+  margin-top: 8px;
+  color: #9ca3af;
+}
+
+.chatsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chatItem {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid #e9ecef;
+}
+
+.chatItem:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  transform: translateX(2px);
+}
+
+.chatAvatar {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #4A4FB9, #6c72d1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  flex-shrink: 0;
+}
+
+.unreadDot {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  background: #f44336;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.chatInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.chatName {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a2c3e;
+  margin-bottom: 4px;
+}
+
+.chatLastMessage {
+  font-size: 13px;
+  color: #6c7a89;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chatMeta {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.chatTime {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-bottom: 6px;
+}
+
+.unreadBadge {
+  background: #f44336;
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+  min-width: 20px;
+  text-align: center;
+}
+
+.userChatWindow {
+  height: 100%;
+  min-height: 550px;
+  display: flex;
+  flex-direction: column;
+}
+
+.loadingChats {
+  text-align: center;
+  padding: 60px;
+  color: #6c7a89;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e9ecef;
+  border-top-color: #4A4FB9;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 16px;
+}
+.userChatHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.newDialogButton {
+  background: #4A4FB9;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: "Raleway", sans-serif;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.newDialogButton:hover:not(:disabled) {
+  background: #3a3f9e;
+  transform: translateY(-1px);
+}
+
+.newDialogButton:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+}
+
+.totalUnreadBadge {
+  background: #4A4FB9;
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: white;
+  border-radius: 16px;
+  width: 400px;
+  max-width: 90%;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modalContent h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: #1a2c3e;
+}
+
+.modalContent p {
+  color: #6c7a89;
+  margin-bottom: 24px;
+}
+
+.modalButtons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.confirmButton {
+  background: #4A4FB9;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: "Raleway", sans-serif;
+}
+
+.confirmButton:hover:not(:disabled) {
+  background: #3a3f9e;
+}
+
+.confirmButton:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+}
+
+.cancelButton {
+  background: #f1f5f9;
+  color: #4a5568;
+  border: 1px solid #d1d5db;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: "Raleway", sans-serif;
+}
+
+.cancelButton:hover {
+  background: #e9ecef;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e9ecef;
+  border-top-color: #4A4FB9;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 16px;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: white;
+  border-radius: 16px;
+  width: 400px;
+  max-width: 90%;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modalContent h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: #1a2c3e;
+}
+
+.modalContent p {
+  color: #6c7a89;
+  margin-bottom: 24px;
+}
+
+.modalButtons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.confirmButton {
+  background: #4A4FB9;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: "Raleway", sans-serif;
+}
+
+.confirmButton:hover:not(:disabled) {
+  background: #3a3f9e;
+}
+
+.confirmButton:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+}
+
+.cancelButton {
+  background: #f1f5f9;
+  color: #4a5568;
+  border: 1px solid #d1d5db;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: "Raleway", sans-serif;
+}
+
+.cancelButton:hover {
+  background: #e9ecef;
+}
+
+.userChatContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 500px;
+  max-height: calc(100vh - 200px);
+  overflow: hidden;
+}
+
+.userChatWindow {
+  height: 100%;
+  min-height: 500px;
+  max-height: calc(100vh - 200px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.chatsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  max-height: 500px;
+  min-height: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  .chatItem {
+    padding: 12px;
+  }
+  
+  .chatAvatar {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+  
+  .chatName {
+    font-size: 14px;
+  }
+  
+  .chatLastMessage {
+    font-size: 12px;
+  }
+}
+
 @media (max-width: 768px) {
   .cabinetContainer {
     padding: 100px 16px 60px;
@@ -410,7 +827,6 @@
 
   .sidebarItem {
     flex: 1;
-    justify-content: center;
     padding: 10px 16px;
   }
 

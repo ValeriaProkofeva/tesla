@@ -18,19 +18,13 @@ export const AuthProvider = ({ children }) => {
 
   const API_URL = 'http://localhost:5000/api';
 
-  // Настройка axios интерцептора для добавления токена
-  axios.interceptors.request.use(
-    (config) => {
-      const currentToken = localStorage.getItem('token');
-      if (currentToken) {
-        config.headers.Authorization = `Bearer ${currentToken}`;
-      }
-      return config;
-    },
-    (error) => {
-      return Promise.reject(error);
+  axios.interceptors.request.use((config) => {
+    const currentToken = localStorage.getItem('token');
+    if (currentToken) {
+      config.headers.Authorization = `Bearer ${currentToken}`;
     }
-  );
+    return config;
+  });
 
   useEffect(() => {
     if (token) {
@@ -43,14 +37,13 @@ export const AuthProvider = ({ children }) => {
   const fetchProfile = async () => {
     try {
       const response = await axios.get(`${API_URL}/auth/profile`);
-      console.log('Fetched user:', response.data.user); // Для отладки
       setUser(response.data.user);
     } catch (error) {
       console.error('Failed to fetch profile:', error);
-      // Если токен невалидный, очищаем всё
-      localStorage.removeItem('token');
-      setToken(null);
-      setUser(null);
+      if (error.response?.status === 403) {
+        console.log('User is blocked');
+      }
+      logout();
     } finally {
       setLoading(false);
     }
@@ -59,15 +52,10 @@ export const AuthProvider = ({ children }) => {
   const register = async (userData) => {
     try {
       const response = await axios.post(`${API_URL}/auth/register`, userData);
-      const { token: newToken, user: newUser } = response.data;
-      
-      console.log('Registered user:', newUser); // Для отладки
-      
-      // Сохраняем токен и пользователя
-      localStorage.setItem('token', newToken);
-      setToken(newToken);
-      setUser(newUser);
-      
+      const { token, user } = response.data;
+      localStorage.setItem('token', token);
+      setToken(token);
+      setUser(user);
       return { success: true };
     } catch (error) {
       console.error('Registration error:', error.response?.data);
@@ -81,21 +69,25 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       const response = await axios.post(`${API_URL}/auth/login`, { email, password });
-      const { token: newToken, user: newUser } = response.data;
-      
-      console.log('Logged in user:', newUser); // Для отладки
-      
-      // Сохраняем токен и пользователя
-      localStorage.setItem('token', newToken);
-      setToken(newToken);
-      setUser(newUser);
-      
+      const { token, user } = response.data;
+      localStorage.setItem('token', token);
+      setToken(token);
+      setUser(user);
       return { success: true };
     } catch (error) {
       console.error('Login error:', error.response?.data);
+      console.error('Login error status:', error.response?.status);
+      
+      if (error.response?.status === 403) {
+        return { 
+          success: false, 
+          error: error.response?.data?.error || 'Ваш аккаунт заблокирован. Обратитесь к администратору.' 
+        };
+      }
+      
       return { 
         success: false, 
-        error: error.response?.data?.error || 'Ошибка входа' 
+        error: error.response?.data?.error || 'Ошибка входа. Проверьте email и пароль.' 
       };
     }
   };

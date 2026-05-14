@@ -327,6 +327,36 @@
   padding: 0 4px;
 }
 
+.quizButtonWrapper {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.quizButtonWrapper {
+  text-align: center;
+  margin-bottom: clamp(20px, 4vw, 32px);
+}
+
+.quizButton {
+  background: linear-gradient(135deg, #4A4FB9 0%, #6c72d1 100%);
+  color: white;
+  border: none;
+  padding: clamp(10px, 2vw, 14px) clamp(20px, 4vw, 32px);
+  border-radius: 40px;
+  font-size: clamp(13px, 3vw, 16px);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Raleway", sans-serif;
+  box-shadow: 0 4px 15px rgba(74, 79, 185, 0.3);
+  white-space: nowrap;
+}
+
+.quizButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(74, 79, 185, 0.4);
+}
+
 /* ============================================
    АДАПТИВНЫЕ СТИЛИ КАТАЛОГА
    ============================================ */
@@ -447,6 +477,12 @@
   .pagination {
     margin-top: 32px;
   }
+
+   .quizButton {
+    padding: 8px 20px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
 }
 
 /* Маленькие мобильные (480px) */
@@ -525,6 +561,13 @@
     gap: 4px;
     margin-top: 24px;
   }
+
+   .quizButton {
+    padding: 6px 16px;
+    font-size: 12px;
+    white-space: normal;
+    line-height: 1.3;
+  }
 }
 
 /* Очень большие экраны (1440px+) */
@@ -565,6 +608,13 @@
 
 .productCard {
   animation: fadeInUp 0.4s ease forwards;
+}
+
+@media (max-width: 375px) {
+  .quizButton {
+    padding: 5px 12px;
+    font-size: 11px;
+  }
 }
 
 /* Добавляем задержку для каждой карточки */

@@ -1,0 +1,673 @@
+.managerContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 100px 20px 80px;
+  min-height: calc(100vh - 300px);
+  font-family: "Raleway", sans-serif;
+}
+
+.managerWrapper {
+  display: flex;
+  gap: 32px;
+  background: #ffffff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar {
+  width: 280px;
+  background: #f8fafc;
+  border-right: 1px solid #e9ecef;
+  flex-shrink: 0;
+}
+
+.managerInfo {
+  padding: 32px 24px;
+  text-align: center;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.managerAvatar {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #55BB93 0%, #7fcca8 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-size: 32px;
+  font-weight: 600;
+  color: #ffffff;
+  font-family: "Raleway", sans-serif;
+}
+
+.managerName {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a2c3e;
+  margin-bottom: 4px;
+  font-family: "Raleway", sans-serif;
+}
+
+.managerEmail {
+  font-size: 13px;
+  color: #6c7a89;
+  font-family: "Raleway", sans-serif;
+}
+
+.managerRole {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #55BB93;
+  font-weight: 500;
+  font-family: "Raleway", sans-serif;
+}
+
+.sidebarNav {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0;
+}
+
+.sidebarItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 24px;
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4a5568;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  font-family: "Raleway", sans-serif;
+  position: relative;
+}
+
+.sidebarItem:hover {
+  background-color: #f1f5f9;
+  color: #55BB93;
+}
+
+.sidebarItem.active {
+  background-color: #e8f5ef;
+  color: #55BB93;
+  border-right: 3px solid #55BB93;
+}
+
+.sidebarIcon {
+  width: 24px;
+  font-size: 18px;
+}
+
+.badge {
+  margin-left: auto;
+  background-color: #e9ecef;
+  color: #4a5568;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-family: "Raleway", sans-serif;
+}
+
+.sidebarItem.active .badge {
+  background-color: #55BB93;
+  color: #ffffff;
+}
+
+.mainContent {
+  flex: 1;
+  padding: 32px;
+  min-width: 0;
+}
+
+.sectionTitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1a2c3e;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e9ecef;
+  font-family: "Raleway", sans-serif;
+}
+
+.statsSection {
+  margin-bottom: 32px;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.statCard {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #e9ecef;
+  transition: all 0.2s;
+}
+
+.statCard:hover {
+  border-color: #cbd5e1;
+  transform: translateY(-2px);
+}
+
+.statValue {
+  font-size: 32px;
+  font-weight: 700;
+  color: #55BB93;
+  margin-bottom: 8px;
+  font-family: "Raleway", sans-serif;
+}
+
+.statLabel {
+  font-size: 13px;
+  color: #6c7a89;
+  font-weight: 500;
+  font-family: "Raleway", sans-serif;
+}
+
+.tableSection {
+  margin-top: 32px;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  font-family: "Raleway", sans-serif;
+}
+
+.table th {
+  background-color: #f8fafc;
+  padding: 14px 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #1a2c3e;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.table td {
+  padding: 12px;
+  border-bottom: 1px solid #e9ecef;
+  color: #4a5568;
+  vertical-align: top;
+}
+
+.statusBadge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: "Raleway", sans-serif;
+}
+
+.statusNew {
+  background-color: #fff7e5;
+  color: #f59e0b;
+}
+
+.statusProcessing {
+  background-color: #eef2ff;
+  color: #4A4FB9;
+}
+
+.statusCompleted {
+  background-color: #e8f5ef;
+  color: #55BB93;
+}
+
+.statusCancelled {
+  background-color: #fee2e2;
+  color: #ef4444;
+}
+
+.statusSelect {
+  padding: 6px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 12px;
+  font-family: "Raleway", sans-serif;
+  background-color: #ffffff;
+  cursor: pointer;
+  width: 100%;
+}
+
+.commentText {
+  font-size: 12px;
+  color: #6c7a89;
+  line-height: 1.4;
+  margin-bottom: 6px;
+  word-break: break-word;
+  max-width: 200px;
+}
+
+.editCommentBtn {
+  background: none;
+  border: none;
+  color: #55BB93;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 0;
+  font-family: "Raleway", sans-serif;
+}
+
+.editCommentBtn:hover {
+  text-decoration: underline;
+}
+
+.commentEdit {
+  min-width: 180px;
+}
+
+.commentTextarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 12px;
+  font-family: "Raleway", sans-serif;
+  resize: vertical;
+}
+
+.commentButtons {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.saveCommentBtn {
+  padding: 4px 10px;
+  background-color: #55BB93;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 11px;
+  font-family: "Raleway", sans-serif;
+}
+
+.saveCommentBtn:hover {
+  background-color: #449b77;
+}
+
+.cancelCommentBtn {
+  padding: 4px 10px;
+  background-color: #f1f5f9;
+  color: #4a5568;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 11px;
+  font-family: "Raleway", sans-serif;
+}
+
+.cancelCommentBtn:hover {
+  background-color: #e9ecef;
+}
+
+.loading, .noData {
+  text-align: center;
+  padding: 48px;
+  color: #6c7a89;
+  font-family: "Raleway", sans-serif;
+}
+
+.message {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  font-size: 14px;
+  font-family: "Raleway", sans-serif;
+}
+
+.message.success {
+  background-color: #e8f5ef;
+  color: #55BB93;
+  border: 1px solid #c8e6d9;
+}
+
+.message.error {
+  background-color: #fee2e2;
+  color: #ef4444;
+  border: 1px solid #fcc5c5;
+}
+
+.chatSidebar {
+  width: 320px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #e9ecef;
+  background: #ffffff;
+}
+
+.chatSidebarHeader {
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.chatSidebarHeader h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a2c3e;
+  margin: 0;
+}
+
+.totalUnreadBadge {
+  background: #4A4FB9;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.chatActions {
+  padding: 12px 16px;
+  display: flex;
+  gap: 10px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.newChatButton {
+  flex: 1;
+  padding: 8px 12px;
+  background: #4A4FB9;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.newChatButton:hover {
+  background: #3a3f9e;
+}
+
+.broadcastButton {
+  flex: 1;
+  padding: 8px 12px;
+  background: #55BB93;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.broadcastButton:hover {
+  background: #449b77;
+}
+
+.managerChatContainer {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.managerChatWrapper {
+  flex: 1;
+  display: flex;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e9ecef;
+}
+
+.chatMain {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.noChatSelected {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #6c7a89;
+  padding: 40px;
+}
+
+.noChatIcon {
+  font-size: 64px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.noChatHint {
+  font-size: 13px;
+  margin-top: 8px;
+  color: #9ca3af;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: white;
+  border-radius: 16px;
+  width: 500px;
+  max-width: 90%;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.modalHeader h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a2c3e;
+}
+
+.modalClose {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #6c7a89;
+  border-radius: 8px;
+}
+
+.modalClose:hover {
+  background: #f1f5f9;
+}
+
+.modalBody {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 16px;
+  font-family: "Raleway", sans-serif;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #4A4FB9;
+}
+
+.usersList {
+  max-height: 400px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.userItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+
+.userItem:hover {
+  background: #f8fafc;
+  border-color: #e9ecef;
+}
+
+.userAvatar {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #4A4FB9, #6c72d1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  flex-shrink: 0;
+}
+
+.userInfo {
+  flex: 1;
+}
+
+.userName {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a2c3e;
+  margin-bottom: 2px;
+}
+
+.userEmail {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.startChatBtn {
+  padding: 6px 12px;
+  background: #4A4FB9;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.startChatBtn:hover {
+  background: #3a3f9e;
+}
+
+.loading, .noUsers {
+  text-align: center;
+  padding: 40px;
+  color: #6c7a89;
+}
+
+.chatButton {
+  background: #55BB93;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: "Raleway", sans-serif;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.chatButton:hover {
+  background: #449b77;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .managerWrapper {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #e9ecef;
+  }
+
+  .sidebarNav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 8px;
+  }
+
+  .sidebarItem {
+    flex: 1;
+    justify-content: center;
+    padding: 10px 16px;
+  }
+
+  .mainContent {
+    padding: 20px;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+}

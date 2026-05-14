@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { useToast  } from '../context/ToastContext';
+import { useToast } from '../context/ToastContext';
 import axios from 'axios';
 import styles from './Modal.module.css';
 
-const ServiceRequestModal = ({ isOpen, onClose, serviceType, serviceName }) => {
+const ServiceRequestModal = ({ isOpen, onClose, preFilledData }) => {
   const { user } = useAuth();
   const { success, error: showError } = useToast();
   const [formData, setFormData] = useState({
-    serviceType: serviceType || '',
-    serviceName: serviceName || '',
+    serviceType: '',
+    serviceName: '',
     name: user?.name || '',
     phone: '',
+    comment: '',
   });
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
@@ -25,15 +26,28 @@ const ServiceRequestModal = ({ isOpen, onClose, serviceType, serviceName }) => {
 
   useEffect(() => {
     if (isOpen) {
-      setFormData({
-        serviceType: serviceType || '',
-        serviceName: serviceName || '',
-        name: user?.name || '',
-        phone: '',
-      });
+      // Если есть предзаполненные данные (из диагностики ИЛИ из карточки услуги)
+      if (preFilledData) {
+        setFormData({
+          serviceType: preFilledData.serviceType || '',
+          serviceName: preFilledData.serviceName || '',
+          name: user?.name || '',
+          phone: user?.phone || '',
+          comment: preFilledData.comment || '',
+        });
+      } else {
+        // Стандартное поведение - очищаем форму
+        setFormData({
+          serviceType: '',
+          serviceName: '',
+          name: user?.name || '',
+          phone: '',
+          comment: '',
+        });
+      }
       setErrors({});
     }
-  }, [isOpen, serviceType, serviceName, user]);
+  }, [isOpen, preFilledData, user]);
 
   if (!isOpen) return null;
 
@@ -49,17 +63,17 @@ const ServiceRequestModal = ({ isOpen, onClose, serviceType, serviceName }) => {
 
   const validateForm = () => {
     const newErrors = {};
-    
+
     if (!formData.serviceType) {
       newErrors.serviceType = 'Выберите вид услуги';
     }
-    
+
     if (!formData.name.trim()) {
       newErrors.name = 'Имя обязательно';
     } else if (formData.name.length < 2) {
       newErrors.name = 'Имя должно содержать минимум 2 символа';
     }
-    
+
     if (!formData.phone.trim()) {
       newErrors.phone = 'Телефон обязателен';
     } else {
@@ -69,7 +83,7 @@ const ServiceRequestModal = ({ isOpen, onClose, serviceType, serviceName }) => {
         newErrors.phone = 'Введите корректный номер телефона';
       }
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -99,11 +113,11 @@ const ServiceRequestModal = ({ isOpen, onClose, serviceType, serviceName }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
-    
+
     setSubmitting(true);
-    
+
     try {
       const token = localStorage.getItem('token');
       await axios.post(
@@ -113,19 +127,20 @@ const ServiceRequestModal = ({ isOpen, onClose, serviceType, serviceName }) => {
           serviceName: formData.serviceName,
           name: formData.name.trim(),
           phone: formData.phone,
+          comment: formData.comment,
         },
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      
-      success('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время');
-      
+
+      success('**Заявка на услугу успешно отправлена!**\nМы свяжемся с вами в ближайшее время');
+
       setTimeout(() => {
         onClose();
-      }, 1500);
+      }, 2000);
     } catch (error) {
-      showError(error.response?.data?.error || 'Ошибка при отправке заявки');
+      showError(error.response?.data?.error || '**Ошибка отправки**\nПопробуйте позже');
     } finally {
       setSubmitting(false);
     }
@@ -136,7 +151,13 @@ const ServiceRequestModal = ({ isOpen, onClose, serviceType, serviceName }) => {
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
         <button className={styles.closeButton} onClick={onClose}>×</button>
         <h2 className={styles.modalTitle}>Заявка на услугу</h2>
-        
+
+        {preFilledData && preFilledData.comment && (
+          <div className={styles.diagnosticNote}>
+            <span>Заявка создана на основании экспресс-диагностики</span>
+          </div>
+        )}
+
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.formGroup}>
             <label>Вид услуги *</label>
@@ -155,7 +176,7 @@ const ServiceRequestModal = ({ isOpen, onClose, serviceType, serviceName }) => {
             </select>
             {errors.serviceType && <div className={styles.errorText}>{errors.serviceType}</div>}
           </div>
-          
+
           <div className={styles.formGroup}>
             <label>Имя *</label>
             <input
@@ -168,7 +189,7 @@ const ServiceRequestModal = ({ isOpen, onClose, serviceType, serviceName }) => {
             />
             {errors.name && <div className={styles.errorText}>{errors.name}</div>}
           </div>
-          
+
           <div className={styles.formGroup}>
             <label>Контактный телефон *</label>
             <input
@@ -181,9 +202,21 @@ const ServiceRequestModal = ({ isOpen, onClose, serviceType, serviceName }) => {
             />
             {errors.phone && <div className={styles.errorText}>{errors.phone}</div>}
           </div>
-          
+
+          <div className={styles.formGroup}>
+            <label>Комментарий</label>
+            <textarea
+              name="comment"
+              value={formData.comment}
+              onChange={handleChange}
+              rows={4}
+              className={styles.textarea}
+              placeholder="Дополнительная информация..."
+            />
+          </div>
+
           <button type="submit" className={styles.submitButton} disabled={submitting}>
-            {submitting ? 'Отправка...' : 'Отправить'}
+            {submitting ? 'Отправка...' : 'Отправить заявку'}
           </button>
         </form>
       </div>

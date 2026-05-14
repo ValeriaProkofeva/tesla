@@ -30,20 +30,21 @@ function Footer() {
     setShowUserMenu(!showUserMenu);
   };
 
-  const handleCabinetClick = () => {
-    if (user?.role === 'admin') {
-      navigate('/admin');
-    } else {
-      navigate('/cabinet');
-    }
-    setShowUserMenu(false);
-  };
+const handleCabinetClick = () => {
+  if (user?.role === 'admin') {
+    navigate('/admin');
+  } else if (user?.role === 'manager') {
+    navigate('/manager');
+  } else {
+    navigate('/cabinet');
+  }
+  setShowUserMenu(false);
+};
 
   const getInitial = () => {
     return user?.name?.charAt(0).toUpperCase() || '?';
   };
 
-  // Функции для навигации
   const navigateToHome = () => {
     navigate('/');
   };
@@ -73,6 +74,7 @@ function Footer() {
             <p>г. Оренбург, Беляевская, 30</p>
             <p>+7 (3532) 90-20-90  /  +7 (922) 540-19-18</p>
             <p>orentesla@yandex.ru</p>
+            <p>admin@tesla.ru</p>
           </div>
         </div>
         <div className={styles.FooterNav}>

@@ -6,7 +6,7 @@ import RegisterModal from '../Modals/RegisterModal';
 import { useAuth } from '../context/AuthContext';
 
 function Header() {
-   const [showLogin, setShowLogin] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const { user, logout } = useAuth();
@@ -33,6 +33,8 @@ function Header() {
   const handleCabinetClick = () => {
     if (user?.role === 'admin') {
       navigate('/admin');
+    } else if (user?.role === 'manager') {
+      navigate('/manager');
     } else {
       navigate('/cabinet');
     }
@@ -70,29 +72,29 @@ function Header() {
         </div>
         <div className={styles.HeaderNav}>
           <nav>
-            <p 
-              className={styles.NavTxt} 
+            <p
+              className={styles.NavTxt}
               onClick={navigateToHome}
               style={{ cursor: 'pointer' }}
             >
               Главная
             </p>
-            <p 
-              className={styles.NavTxt} 
+            <p
+              className={styles.NavTxt}
               onClick={navigateToCatalog}
               style={{ cursor: 'pointer' }}
             >
               Каталог продукции
             </p>
-            <p 
-              className={styles.NavTxt} 
+            <p
+              className={styles.NavTxt}
               onClick={navigateToServices}
               style={{ cursor: 'pointer' }}
             >
               Услуги
             </p>
-            <p 
-              className={styles.NavTxt} 
+            <p
+              className={styles.NavTxt}
               onClick={navigateToWorks}
               style={{ cursor: 'pointer' }}
             >
@@ -116,7 +118,9 @@ function Header() {
                     <p className={styles.userName}>{user.name}</p>
                     <p className={styles.userEmail}>{user.email}</p>
                     <p className={styles.userRole}>
-                      {user.role === 'admin' ? 'Администратор' : 'Пользователь'}
+                      {user.role === 'admin' && 'Администратор'}
+                      {user.role === 'manager' && 'Менеджер'}
+                      {user.role === 'user' && 'Пользователь'}
                     </p>
                   </div>
                   <div className={styles.menuItems}>
@@ -134,7 +138,7 @@ function Header() {
         </div>
       </div>
 
-      <LoginModal 
+      <LoginModal
         isOpen={showLogin}
         onClose={() => setShowLogin(false)}
         onSwitchToRegister={() => {

@@ -4,8 +4,9 @@ import Consultation from './Consultation.js';
 import ServiceRequest from './ServiceRequest.js';
 import EquipmentOrder from './EquipmentOrder.js';
 import Product from './Product.js';
+import ChatRoom from './ChatRoom.js';
+import ChatMessage from './ChatMessage.js';
 
-// Определяем связи
 User.hasMany(Consultation, { 
   foreignKey: 'userId', 
   as: 'consultations',
@@ -39,6 +40,20 @@ Product.hasMany(EquipmentOrder,
   { foreignKey: 'productId', 
     as: 'orders' 
   });
+
+  User.hasMany(ChatRoom, { as: 'userRooms', foreignKey: 'userId' });
+User.hasMany(ChatRoom, { as: 'managerRooms', foreignKey: 'managerId' });
+ChatRoom.belongsTo(User, { as: 'user', foreignKey: 'userId' });
+ChatRoom.belongsTo(User, { as: 'manager', foreignKey: 'managerId' });
+
+ChatRoom.hasMany(ChatMessage, { as: 'messages', foreignKey: 'roomId' });
+ChatMessage.belongsTo(ChatRoom, { as: 'room', foreignKey: 'roomId' });
+
+User.hasMany(ChatMessage, { as: 'sentMessages', foreignKey: 'senderId' });
+User.hasMany(ChatMessage, { as: 'receivedMessages', foreignKey: 'receiverId' });
+ChatMessage.belongsTo(User, { as: 'sender', foreignKey: 'senderId' });
+ChatMessage.belongsTo(User, { as: 'receiver', foreignKey: 'receiverId' });
+
 export {
   sequelize,
   User,
@@ -46,4 +61,6 @@ export {
   ServiceRequest,
   EquipmentOrder,
   Product,
+  ChatRoom,
+  ChatMessage,
 };

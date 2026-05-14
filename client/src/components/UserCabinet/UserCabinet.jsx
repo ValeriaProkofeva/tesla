@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { useChat } from '../context/ChatContext';
 import axios from 'axios';
 import styles from './UserCabinet.module.css';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
+import PasswordInput from '../Common/PasswordInput';
+import UserChat from './UserChat';
+
 
 const UserCabinet = () => {
   const { user, updateProfile, logout } = useAuth();
+  const { totalUnread } = useChat();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('profile');
   const [isEditing, setIsEditing] = useState(false);
@@ -28,13 +33,11 @@ const UserCabinet = () => {
   const [equipmentOrders, setEquipmentOrders] = useState([]);
   const [loadingEquipment, setLoadingEquipment] = useState(true);
 
-  // Проверка наличия специального символа
   const hasSpecialChar = (password) => {
     const specialChars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
     return specialChars.test(password);
   };
 
-  // Загрузка заявок
   useEffect(() => {
     fetchConsultations();
     fetchServiceRequests();
@@ -158,7 +161,6 @@ const UserCabinet = () => {
     navigate('/');
   };
 
-  // Функции для отображения статуса
   const getStatusText = (status) => {
     const statuses = {
       new: 'Новая',
@@ -208,7 +210,6 @@ const UserCabinet = () => {
       <Header></Header>
       <div className={styles.cabinetContainer}>
         <div className={styles.cabinetWrapper}>
-          {/* Боковое меню */}
           <div className={styles.sidebar}>
             <div className={styles.userAvatar}>
               <div className={styles.avatarLarge}>
@@ -252,11 +253,19 @@ const UserCabinet = () => {
                   <span className={styles.badge}>{equipmentOrders.length}</span>
                 )}
               </button>
-             
+              <button
+                className={`${styles.sidebarItem} ${activeTab === 'chat' ? styles.active : ''}`}
+                onClick={() => setActiveTab('chat')}
+              >
+                Сообщения
+                {totalUnread && totalUnread() > 0 && (
+                  <span className={styles.badge}>{totalUnread()}</span>
+                )}
+              </button>
+
             </nav>
           </div>
 
-          {/* Основной контент */}
           <div className={styles.mainContent}>
             {message.text && (
               <div className={`${styles.message} ${styles[message.type]}`}>
@@ -264,7 +273,8 @@ const UserCabinet = () => {
               </div>
             )}
 
-            {/* Вкладка профиля */}
+             {activeTab === 'chat' && <UserChat />}
+
             {activeTab === 'profile' && (
               <div className={styles.profileSection}>
                 <h2 className={styles.sectionTitle}>Личные данные</h2>
@@ -327,37 +337,34 @@ const UserCabinet = () => {
                     <div className={styles.formHint}>Оставьте поля пустыми, если не хотите менять пароль</div>
 
                     <div className={styles.formGroup}>
-                      <label>Текущий пароль</label>
-                      <input
-                        type="password"
-                        name="currentPassword"
+                      <PasswordInput
                         value={formData.currentPassword}
                         onChange={handleChange}
-                        className={errors.currentPassword ? styles.error : ''}
+                        placeholder="Введите текущий пароль"
+                        label="Текущий пароль"
+                        error={errors.currentPassword}
                       />
                       {errors.currentPassword && <div className={styles.errorText}>{errors.currentPassword}</div>}
                     </div>
 
                     <div className={styles.formGroup}>
-                      <label>Новый пароль (мин. 6 символов + спецсимвол)</label>
-                      <input
-                        type="password"
-                        name="newPassword"
+                      <PasswordInput
                         value={formData.newPassword}
                         onChange={handleChange}
-                        className={errors.newPassword ? styles.error : ''}
+                        placeholder="Введите новый пароль"
+                        label="Новый пароль (мин. 6 символов + спецсимвол)"
+                        error={errors.newPassword}
                       />
                       {errors.newPassword && <div className={styles.errorText}>{errors.newPassword}</div>}
                     </div>
 
                     <div className={styles.formGroup}>
-                      <label>Подтверждение пароля</label>
-                      <input
-                        type="password"
-                        name="confirmNewPassword"
+                      <PasswordInput
                         value={formData.confirmNewPassword}
                         onChange={handleChange}
-                        className={errors.confirmNewPassword ? styles.error : ''}
+                        placeholder="Подтвердите новый пароль"
+                        label="Подтверждение пароля"
+                        error={errors.confirmNewPassword}
                       />
                       {errors.confirmNewPassword && <div className={styles.errorText}>{errors.confirmNewPassword}</div>}
                     </div>
@@ -375,7 +382,6 @@ const UserCabinet = () => {
               </div>
             )}
 
-            {/* Вкладка заявок на консультацию */}
             {activeTab === 'consultations' && (
               <div className={styles.consultationsSection}>
                 <h2 className={styles.sectionTitle}>Заявки на консультацию</h2>
@@ -409,7 +415,6 @@ const UserCabinet = () => {
               </div>
             )}
 
-            {/* Вкладка заявок на услуги */}
             {activeTab === 'services' && (
               <div className={styles.servicesSection}>
                 <h2 className={styles.sectionTitle}>Заявки на услуги</h2>

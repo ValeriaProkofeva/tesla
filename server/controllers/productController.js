@@ -1,7 +1,6 @@
 import Product from '../models/Product.js';
 import { Op } from 'sequelize';
 
-// Получить все товары
 export const getAllProducts = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
@@ -26,7 +25,6 @@ export const getAllProducts = async (req, res) => {
   }
 };
 
-// Получить товары по категории
 export const getProductsByCategory = async (req, res) => {
   try {
     const { category } = req.params;
@@ -53,7 +51,6 @@ export const getProductsByCategory = async (req, res) => {
   }
 };
 
-// Получить один товар
 export const getProductById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -70,7 +67,6 @@ export const getProductById = async (req, res) => {
   }
 };
 
-// Создать товар (только админ)
 export const createProduct = async (req, res) => {
   try {
     const { name, category, image, shortDescription, fullDescription, specifications, price, inStock } = req.body;
@@ -100,7 +96,6 @@ export const createProduct = async (req, res) => {
   }
 };
 
-// Обновить товар (только админ)
 export const updateProduct = async (req, res) => {
   try {
     const { id } = req.params;
@@ -132,7 +127,6 @@ export const updateProduct = async (req, res) => {
   }
 };
 
-// Удалить товар (только админ)
 export const deleteProduct = async (req, res) => {
   try {
     const { id } = req.params;
@@ -150,7 +144,6 @@ export const deleteProduct = async (req, res) => {
   }
 };
 
-// Получить все категории
 export const getCategories = async (req, res) => {
   try {
     const products = await Product.findAll({

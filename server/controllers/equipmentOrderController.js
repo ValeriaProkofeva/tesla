@@ -1,7 +1,6 @@
 import EquipmentOrder from '../models/EquipmentOrder.js';
 import User from '../models/User.js';
 
-// Создание заказа на оборудование
 export const createEquipmentOrder = async (req, res) => {
   try {
     const { productName, productId, name, phone, comment } = req.body;
@@ -48,14 +47,12 @@ export const createEquipmentOrder = async (req, res) => {
   }
 };
 
-// Получение заказов пользователя
 export const getUserEquipmentOrders = async (req, res) => {
   try {
     const orders = await EquipmentOrder.findAll({
       where: { userId: req.user.id },
       order: [['createdAt', 'DESC']],
     });
-    // Убедитесь, что orders содержит adminComment
     console.log('Orders with adminComment:', orders.map(o => ({ id: o.id, adminComment: o.adminComment })));
     res.json({ orders });
   } catch (error) {
@@ -64,7 +61,6 @@ export const getUserEquipmentOrders = async (req, res) => {
   }
 };
 
-// Получение всех заказов (админ)
 export const getAllEquipmentOrders = async (req, res) => {
   try {
     const orders = await EquipmentOrder.findAll({
@@ -84,7 +80,6 @@ export const getAllEquipmentOrders = async (req, res) => {
   }
 };
 
-// Обновление статуса и комментария (админ)
 export const updateEquipmentOrder = async (req, res) => {
   try {
     const { id } = req.params;
@@ -119,7 +114,6 @@ export const updateEquipmentOrder = async (req, res) => {
   }
 };
 
-// Удаление заказа (админ)
 export const deleteEquipmentOrder = async (req, res) => {
   try {
     const { id } = req.params;

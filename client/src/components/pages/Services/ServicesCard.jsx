@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { useToast  } from '../../context/ToastContext';
+import { useToast } from '../../context/ToastContext';
 
 import ServiceRequestModal from '../../Modals/ServiceRequestModal';
 import styles from './Services.module.css';
@@ -10,7 +10,7 @@ function ServicesCard() {
   const navigate = useNavigate();
   const { user } = useAuth();
   const [modalOpen, setModalOpen] = useState(false);
-     const { error } = useToast(); // Добавляем уведомления
+  const { error } = useToast(); // Добавляем уведомления
 
   const [selectedService, setSelectedService] = useState({ type: '', name: '' });
 
@@ -18,7 +18,7 @@ function ServicesCard() {
     navigate('/catalog');
   };
 
-   const handleOpenModal = (serviceType, serviceName) => {
+  const handleOpenModal = (serviceType, serviceName) => {
     if (!user) {
       error('Для отправки заявки необходимо авторизоваться', 5000);
       return;
@@ -58,7 +58,7 @@ function ServicesCard() {
                 <li className={styles.CardContentTxt}>Оперативная доставка. Организуем логистику под ваш график. Работаем с любой сложностью маршрутов, обеспечивая бережную транспортировку крупногабаритных трансформаторов и подстанций до склада заказчика или непосредственно на строительную площадку.</li>
               </ol>
             </div>
-            <button 
+            <button
               className={styles.ServButt}
               onClick={() => handleOpenModal('sale', 'Продажа оборудования')}
             >
@@ -107,7 +107,7 @@ function ServicesCard() {
                 </ol>
               </div>
             </div>
-            <button 
+            <button
               className={styles.ServButt}
               onClick={() => handleOpenModal('repair', 'Ремонт трансформаторов')}
             >
@@ -136,7 +136,7 @@ function ServicesCard() {
                 <li className={styles.CardContentTxt}> <span className={styles.CardContentTxtSpan}>Строительство солнечных электрических станций (СЭС)</span> <br />Проектирование и установка промышленных и коммерческих солнечных электростанций. Подключение к сетям, монтаж инверторов, модулей, систем мониторинга.</li>
               </ol>
             </div>
-            <button 
+            <button
               className={styles.ServButt}
               onClick={() => handleOpenModal('electromontage', 'Промышленный электромонтаж')}
             >
@@ -166,7 +166,7 @@ function ServicesCard() {
                 <li className={styles.CardContentTxt}> <span className={styles.CardContentTxtSpan}>Электротехническая лаборатория (ЭТЛ)</span> <br />Проведение испытаний электрооборудования: измерение сопротивления изоляции, проверка заземляющих устройств, испытания повышенным напряжением, проверка автоматических выключателей.</li>
               </ol>
             </div>
-            <button 
+            <button
               className={styles.ServButt}
               onClick={() => handleOpenModal('commissioning', 'Пуско-наладочные работы и ЭТЛ')}
             >
@@ -182,8 +182,11 @@ function ServicesCard() {
       <ServiceRequestModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
-        serviceType={selectedService.type}
-        serviceName={selectedService.name}
+        preFilledData={{
+          serviceType: selectedService.type,
+          serviceName: selectedService.name,
+          comment: ''
+        }}
       />
     </>
   );

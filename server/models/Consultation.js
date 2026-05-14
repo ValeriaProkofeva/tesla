@@ -23,7 +23,7 @@ const Consultation = sequelize.define('Consultation', {
     },
   },
   status: {
-    type: DataTypes.STRING(20),  // Изменено с ENUM на STRING
+    type: DataTypes.STRING(20),  
     defaultValue: 'new',
     allowNull: false,
   },

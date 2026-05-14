@@ -11,7 +11,7 @@ const serviceTypes = {
 // Создание заявки на услугу
 export const createServiceRequest = async (req, res) => {
   try {
-    const { serviceType, serviceName, name, phone } = req.body;
+    const { serviceType, serviceName, name, phone, comment  } = req.body;
     const userId = req.user.id;
 
     if (!serviceType || !name || !phone) {
@@ -38,6 +38,7 @@ export const createServiceRequest = async (req, res) => {
       phone,
       userId,
       status: 'new',
+      comment: comment || null,
     });
 
     res.status(201).json({

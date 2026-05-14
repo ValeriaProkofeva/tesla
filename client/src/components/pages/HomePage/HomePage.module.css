@@ -1,155 +1,251 @@
-a{
-    text-decoration: none;
-    color: #4A4FB9;
+/* ============================================
+   ГЛАВНАЯ СТРАНИЦА - АДАПТИВНАЯ ВЕРСИЯ
+   ============================================ */
+
+a {
+  text-decoration: none;
+  color: #4A4FB9;
 }
 
+/* Глобальное правило для всех контейнеров */
+.About,
+.Services,
+.privilege,
+.partners,
+.HomeForm {
+  overflow-x: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ============================================
+   БЛОК "О КОМПАНИИ"
+   ============================================ */
+
 .About {
-    max-width: 1720px;
-    margin: 0 auto;
-    margin-top: 150px;
+  max-width: 1720px;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: clamp(60px, 10vw, 150px);
+  padding: 0 clamp(16px, 4vw, 40px);
+  box-sizing: border-box;
 }
 
 .AboutCont {
-    max-width: 1720px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.AboutCont2 {
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: clamp(20px, 5vw, 50px);
+  flex-wrap: wrap;
 }
 
 .AboutLeft {
-    display: flex;
-    flex-direction: column;
-    width: 940px;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 250px;
+  max-width: 100%;
+  gap: clamp(8px, 2vw, 10px);
 }
 
 .AboutH1 {
-    font-weight: bold;
-    font-size: 32px;
+  font-weight: bold;
+  font-size: clamp(24px, 5vw, 32px);
+  word-break: break-word;
 }
 
 .AboutTxt {
-    font-weight: bold;
-    font-size: 30px;
+  font-weight: bold;
+  font-size: clamp(20px, 4vw, 30px);
+  line-height: 1.3;
+  word-break: break-word;
 }
 
 .AboutTxt2 {
-    font-size: 20px;
-    width: 775px;
+  font-size: clamp(14px, 3vw, 20px);
+  line-height: 1.5;
+  word-break: break-word;
 }
 
 .AboutRight {
-    display: flex;
+  display: flex;
+  flex: 1;
+  min-width: 250px;
+  max-width: 100%;
 }
 
 .AboutImg {
-    width: 755px;
-    height: 335px;
+  width: 100%;
+  height: auto;
+  max-height: 335px;
+  object-fit: cover;
+  border-radius: 16px;
 }
 
+/* ============================================
+   БЛОК "УСЛУГИ"
+   ============================================ */
+
 .Services {
-    max-width: 1720px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    margin-top: 110px;
+  max-width: 1720px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: clamp(60px, 8vw, 110px);
+  padding: 0 clamp(16px, 4vw, 40px);
+  box-sizing: border-box;
 }
 
 .servicesH1 {
-    font-weight: bold;
-    font-size: 32px;
+  font-weight: bold;
+  font-size: clamp(24px, 5vw, 32px);
+  word-break: break-word;
 }
 
 .servicesTxt {
-    font-size: 20px;
-    font-weight: 400;
-    width: 725px;
+  font-size: clamp(14px, 3vw, 20px);
+  font-weight: 400;
+  max-width: 725px;
+  width: 100%;
+  word-break: break-word;
 }
 
 .servicesCards {
-    display: flex;
-    gap: 85px;
-    margin-top: 70px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(20px, 5vw, 85px);
+  margin-top: clamp(40px, 6vw, 70px);
+  width: 100%;
+}
+
+.servecesCard {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  width: 100%;
+}
+
+.servecesCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.servecesCard img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+.cardTxt {
+  padding: 20px;
 }
 
 .cardTxt1 {
-    font-size: 22px;
-    font-weight: bold;
+  font-size: clamp(16px, 3vw, 22px);
+  font-weight: bold;
+  margin-bottom: 8px;
+  word-break: break-word;
 }
 
 .cardTxt2 {
-    font-size: 18px;
-    font-weight: 300;
+  font-size: clamp(13px, 2.5vw, 18px);
+  font-weight: 300;
+  color: #4A4FB9;
+  word-break: break-word;
 }
 
+/* ============================================
+   БЛОК "ПРЕИМУЩЕСТВА"
+   ============================================ */
+
 .privilege {
-    max-width: 1720px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 80px;
-    margin-top: 110px;
+  max-width: 1720px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(30px, 6vw, 80px);
+  margin-top: clamp(60px, 8vw, 110px);
+  padding: 0 clamp(16px, 4vw, 40px);
+  box-sizing: border-box;
 }
 
 .privilegeH1 {
-    font-weight: bold;
-    font-size: 32px;
+  font-weight: bold;
+  font-size: clamp(24px, 5vw, 32px);
+  text-align: center;
+  word-break: break-word;
 }
 
-.privilegeBoxes{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.privilegeBoxes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: clamp(20px, 4vw, 40px);
+  width: 100%;
 }
 
-.privilegeBox{
-    width: 335px;
-    display: flex;
-    flex-direction: column;
-    padding-right: 60px;
-    padding-left: 60px;
-    border-right: 1px solid #2E3335;
+.privilegeBox {
+  flex: 1;
+  min-width: 250px;
+  max-width: 335px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
+  border-right: 1px solid #2E3335;
 }
 
-.privilegeBox1{
-    width: 335px;
-    display: flex;
-    flex-direction: column;
-    padding-left: 60px;
-}
-.privilegeBoxH1{
-    font-size: 22px;
-    font-weight: bold;
-}
-
-.privilegeBoxTxt{
-    font-size: 18px;
+.privilegeBox1 {
+  flex: 1;
+  min-width: 250px;
+  max-width: 335px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
 }
 
-.partners{
-    max-width: 1720px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 80px;
-    margin-top: 110px;
+.privilegeBoxH1 {
+  font-size: clamp(18px, 3vw, 22px);
+  font-weight: bold;
+  margin-bottom: 12px;
+  word-break: break-word;
 }
 
-.partnersH1{
-    font-weight: bold;
-    font-size: 32px;
+.privilegeBoxTxt {
+  font-size: clamp(14px, 2.5vw, 18px);
+  line-height: 1.4;
+  word-break: break-word;
 }
 
-.partnersTxt{
-    color: #4A4FB9;
-    font-weight: bold;
-    font-size: 22px;
+/* ============================================
+   БЛОК "ПАРТНЕРЫ"
+   ============================================ */
+
+.partners {
+  max-width: 1720px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(30px, 6vw, 80px);
+  margin-top: clamp(60px, 8vw, 110px);
+  padding: 0 clamp(16px, 4vw, 40px);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.partnersH1 {
+  font-weight: bold;
+  font-size: clamp(24px, 5vw, 32px);
+  text-align: center;
+  word-break: break-word;
 }
 
 .partnersWrapper {
@@ -160,7 +256,7 @@ a{
 
 .partnersSlide {
   display: flex;
-  gap: 2rem;
+  gap: clamp(1rem, 3vw, 2rem);
   animation: scroll 30s linear infinite;
   width: max-content;
 }
@@ -181,8 +277,8 @@ a{
 .partnersTxt {
   white-space: nowrap;
   flex-shrink: 0;
+  font-size: clamp(12px, 3vw, 22px);
 }
-
 
 .partnersLink {
   text-decoration: none;
@@ -195,92 +291,104 @@ a{
   opacity: 0.8;
 }
 
-.partnersLink:hover .partnersTxt {
-  color: #09017c;
+/* ============================================
+   ФОРМА ОБРАТНОЙ СВЯЗИ
+   ============================================ */
+
+.HomeForm {
+  max-width: 1720px;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: clamp(60px, 8vw, 110px);
+  padding: clamp(30px, 5vw, 60px) clamp(16px, 4vw, 40px);
+  border-bottom: 1px solid #2E3335;
+  border-top: 1px solid #2E3335;
+  box-sizing: border-box;
 }
 
-.HomeForm{
-    max-width: 1720px;
-    margin: 0 auto;
-    margin-top: 110px;
-    padding: 60px 0px;
-    border-bottom: 1px solid #2E3335;
-    border-top: 1px solid #2E3335;
+.Form {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 3vw, 20px);
+  margin-top: clamp(20px, 4vw, 40px);
+  width: 100%;
 }
 
-.Form{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin-top: 40px;
+.FormH1 {
+  font-weight: bold;
+  font-size: clamp(24px, 5vw, 32px);
+  text-align: center;
+  word-break: break-word;
 }
 
-.FormH1{
-    font-weight: bold;
-    font-size: 32px;
+.FormTxt {
+  font-size: clamp(14px, 3vw, 18px);
+  text-align: center;
+  word-break: break-word;
 }
 
-.FormTxt{
-    font-size: 18px;
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #2E3335;
+  font-size: clamp(13px, 2.5vw, 16px);
+  font-weight: bold;
+  font-family: "Raleway", sans-serif;
+  width: 100%;
 }
 
-.formGroup{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    color: #2E3335;
-    font-size: 16px;
-    font-weight: bold;
-    font-family: "Raleway", sans-serif;
+.formGroup input {
+  color: #2E3335;
+  font-size: clamp(13px, 2.5vw, 14px);
+  height: clamp(36px, 5vw, 40px);
+  width: 100%;
+  max-width: 100%;
+  padding: 0 12px;
+  font-family: "Raleway", sans-serif;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
 }
 
-input{
-    color: #2E3335;
-    font-size: 14px;
-    height: 30px;
-    width: 400px;
-    font-family: "Raleway", sans-serif;
+.formGroup1 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: flex-start;
+  color: #2E3335;
+  font-size: clamp(12px, 2.5vw, 16px);
+  font-weight: bold;
+  font-family: "Raleway", sans-serif;
+  width: 100%;
 }
 
-.checkboxInput{
-    width: 15px;
-    height: 15px;
-    gap: 10px;
+.checkboxInput {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  margin-top: 2px;
 }
 
-.formGroup1{
-    display: flex;
-    gap: 10px;
-    color: #2E3335;
-    font-size: 16px;
-    font-weight: bold;
-    font-family: "Raleway", sans-serif;
-}
-
-.errorInput {
-  border-color: #f44336 !important;
-}
-
-.errorText {
-  color: #f44336;
-  font-size: 12px;
-   font-family: "Raleway", sans-serif;
-  margin-top: 5px;
+.checkboxLabel {
+  flex: 1;
+  line-height: 1.4;
 }
 
 .submitButton {
   background-color: #4A4FB9;
   color: white;
   border: none;
-  padding: 12px 24px;
+  padding: clamp(10px, 2vw, 12px) clamp(20px, 4vw, 24px);
   border-radius: 10px;
-  font-size: 16px;
+  font-size: clamp(14px, 2.5vw, 16px);
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s;
   margin-top: 10px;
   width: 100%;
-  max-width: 400px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .submitButton:hover:not(:disabled) {
@@ -296,25 +404,21 @@ input{
   padding: 12px;
   border-radius: 8px;
   margin-bottom: 20px;
-   font-family: "Raleway", sans-serif;
+  font-family: "Raleway", sans-serif;
   text-align: center;
   animation: fadeIn 0.3s ease;
+  word-break: break-word;
 }
 
-.submitMessage.success {
-  background-color: #e8f5e9;
-  color: #4caf50;
-  
-    font-family: "Raleway", sans-serif;
-  border: 1px solid #4caf50;
+.errorInput {
+  border-color: #f44336 !important;
 }
 
-.submitMessage.error {
-  background-color: #ffebee;
+.errorText {
   color: #f44336;
-  
-    font-family: "Raleway", sans-serif;
-  border: 1px solid #f44336;
+  font-size: clamp(11px, 2vw, 12px);
+  font-family: "Raleway", sans-serif;
+  margin-top: 5px;
 }
 
 @keyframes fadeIn {
@@ -325,5 +429,164 @@ input{
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* ============================================
+   АДАПТИВНЫЕ СТИЛИ
+   ============================================ */
+
+/* Планшеты горизонтальные (1024px) */
+@media (max-width: 1024px) {
+  .servicesCards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  
+  .privilegeBox, .privilegeBox1 {
+    min-width: 220px;
+  }
+}
+
+/* Планшеты вертикальные (768px) */
+@media (max-width: 768px) {
+  .AboutCont {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .AboutLeft {
+    align-items: center;
+  }
+  
+  .servicesCards {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .privilegeBoxes {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .privilegeBox {
+    border-right: none;
+    border-bottom: 1px solid #2E3335;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .privilegeBox1 {
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .formGroup1 {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .checkboxLabel {
+    font-size: 13px;
+  }
+}
+
+/* Мобильные устройства (640px) */
+@media (max-width: 640px) {
+  .servicesCards {
+    gap: 20px;
+  }
+  
+  .cardTxt {
+    padding: 16px;
+  }
+  
+  .HomeForm {
+    margin-top: 50px;
+    padding: 30px 20px;
+  }
+  
+  .Form {
+    align-items: stretch;
+  }
+}
+
+/* Маленькие мобильные (480px) */
+@media (max-width: 480px) {
+  .About, .Services, .privilege, .partners, .HomeForm {
+    padding: 0 16px;
+  }
+  
+  .HomeForm {
+    padding: 20px 16px;
+  }
+  
+  .cardTxt {
+    padding: 12px;
+  }
+  
+  .cardTxt1 {
+    font-size: 16px;
+  }
+  
+  .cardTxt2 {
+    font-size: 14px;
+  }
+  
+  .partnersTxt {
+    font-size: 12px;
+  }
+  
+  .partnersSlide {
+    gap: 0.8rem;
+  }
+  
+  .FormH1 {
+    font-size: 22px;
+  }
+  
+  .FormTxt {
+    font-size: 14px;
+  }
+  
+  .formGroup label {
+    font-size: 13px;
+  }
+  
+  .submitButton {
+    font-size: 14px;
+  }
+}
+
+/* Супер маленькие (375px) */
+@media (max-width: 375px) {
+  .cardTxt {
+    padding: 10px;
+  }
+  
+  .cardTxt1 {
+    font-size: 15px;
+  }
+  
+  .privilegeBoxH1 {
+    font-size: 18px;
+  }
+  
+  .privilegeBoxTxt {
+    font-size: 14px;
+  }
+  
+  .HomeForm {
+    padding: 16px 12px;
+  }
+  
+  .FormH1 {
+    font-size: 20px;
+  }
+  
+  .checkboxLabel {
+    font-size: 12px;
   }
 }

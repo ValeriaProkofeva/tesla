@@ -32,6 +32,24 @@
   overflow-x: hidden;
 }
 
+.diagnosticNote {
+  background: #eef2ff;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #4A4FB9;
+  font-family: "Raleway", sans-serif;
+  border: 1px solid #c7d2fe;
+}
+
+.diagnosticIcon {
+  font-size: 18px;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -577,118 +595,715 @@
   font-family: "Raleway", sans-serif;
 }
 
+.modalMessage {
+  font-size: 14px;
+  color: #4a5568;
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+}
+
+.formButtons {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.formButtons .submitButton {
+  flex: 1;
+}
+
+/* ============================================
+   ДИАГНОСТИКА
+   ============================================ */
+
+.diagnosticContainer {
+  padding: 20px 0;
+}
+
+.diagnosticHeader {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.diagnosticSubtitle {
+  font-size: 14px;
+  color: #6c7a89;
+  font-family: "Raleway", sans-serif;
+}
+
+/* Прогресс-бар */
+.progressSection {
+  margin-bottom: 32px;
+}
+
+.progressBar {
+  height: 6px;
+  background: #e9ecef;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progressFill {
+  height: 100%;
+  background: #4A4FB9;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.progressText {
+  font-size: 12px;
+  color: #6c7a89;
+  font-family: "Raleway", sans-serif;
+}
+
+/* Вопросы */
+.questionSection {
+  margin-bottom: 32px;
+}
+
+.questionText {
+  font-size: 18px;
+  font-weight: 500;
+  color: #1a2c3e;
+  margin-bottom: 20px;
+  font-family: "Raleway", sans-serif;
+}
+
+.optionsGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.radioLabel, .checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #2E3335;
+  font-family: "Raleway", sans-serif;
+  padding: 8px 12px;
+  background: #f8fafc;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.radioLabel:hover, .checkboxLabel:hover {
+  background: #eef2ff;
+}
+
+.radioLabel input, .checkboxLabel input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+/* Навигация */
+.navigationButtons {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.backButton, .nextButton {
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: "Raleway", sans-serif;
+}
+
+.backButton {
+  background: #f1f5f9;
+  color: #4a5568;
+  border: 1px solid #d1d5db;
+}
+
+.backButton:hover:not(:disabled) {
+  background: #e9ecef;
+}
+
+.backButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.nextButton {
+  background: #4A4FB9;
+  color: white;
+  border: none;
+}
+
+.nextButton:hover:not(:disabled) {
+  background: #3a3f9e;
+}
+
+.nextButton:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+}
+
+/* Результаты */
+.resultSection {
+  animation: fadeIn 0.3s ease;
+}
+
+.severityBadge {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: "Raleway", sans-serif;
+  margin-bottom: 20px;
+}
+
+.severityhigh {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.severitymedium {
+  background: #fff7e5;
+  color: #f59e0b;
+}
+
+.severitylow {
+  background: #e6f7e6;
+  color: #10b981;
+}
+
+.diagnosisBlock, .recommendationsBlock {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.diagnosisBlock h4, .recommendationsBlock h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a2c3e;
+  margin-bottom: 10px;
+  font-family: "Raleway", sans-serif;
+}
+
+.diagnosisBlock p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #4a5568;
+  font-family: "Raleway", sans-serif;
+}
+
+.recommendationsBlock ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.recommendationsBlock li {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #4a5568;
+  margin-bottom: 6px;
+  font-family: "Raleway", sans-serif;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.repairButton {
+  flex: 2;
+  background: #4A4FB9;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: "Raleway", sans-serif;
+  transition: background 0.2s;
+}
+
+.repairButton:hover {
+  background: #3a3f9e;
+}
+
+.resetButton {
+  flex: 1;
+  background: #f1f5f9;
+  color: #4a5568;
+  border: 1px solid #d1d5db;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: "Raleway", sans-serif;
+  transition: all 0.2s;
+}
+
+.resetButton:hover {
+  background: #e9ecef;
+}
+
+.quizContainer {
+  padding: 20px 0;
+}
+
+/* Заголовок */
+.quizHeader {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.quizSubtitle {
+  font-size: 14px;
+  color: #6c7a89;
+  font-family: "Raleway", sans-serif;
+}
+
+/* Прогресс-бар */
+.progressSection {
+  margin-bottom: 32px;
+}
+
+.progressBar {
+  height: 6px;
+  background: #e9ecef;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progressFill {
+  height: 100%;
+  background: #4A4FB9;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.progressText {
+  font-size: 12px;
+  color: #6c7a89;
+  font-family: "Raleway", sans-serif;
+  text-align: right;
+}
+
+/* Вопросы */
+.questionSection {
+  margin-bottom: 32px;
+}
+
+.questionText {
+  font-size: 18px;
+  font-weight: 500;
+  color: #1a2c3e;
+  margin-bottom: 20px;
+  font-family: "Raleway", sans-serif;
+}
+
+.optionsGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #2E3335;
+  font-family: "Raleway", sans-serif;
+  padding: 10px 16px;
+  background: #f8fafc;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.radioLabel:hover {
+  background: #eef2ff;
+}
+
+.radioLabel input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+/* Навигация */
+.navigationButtons {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.backButton, .nextButton {
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: "Raleway", sans-serif;
+}
+
+.backButton {
+  background: #f1f5f9;
+  color: #4a5568;
+  border: 1px solid #d1d5db;
+}
+
+.backButton:hover:not(:disabled) {
+  background: #e9ecef;
+}
+
+.backButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.nextButton {
+  background: #4A4FB9;
+  color: white;
+  border: none;
+}
+
+.nextButton:hover:not(:disabled) {
+  background: #3a3f9e;
+}
+
+.nextButton:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   РЕЗУЛЬТАТЫ ПОДБОРА
+   ============================================ */
+
+.resultSection {
+  animation: fadeIn 0.3s ease;
+}
+
+.resultHeader {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.resultHeader h3 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1a2c3e;
+  margin-bottom: 8px;
+  font-family: "Raleway", sans-serif;
+}
+
+.resultHeader p {
+  font-size: 14px;
+  color: #6c7a89;
+  font-family: "Raleway", sans-serif;
+}
+
+/* Сетка карточек товаров */
+.resultProductsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-height: 500px;
+  overflow-y: auto;
+  padding: 8px;
+  margin-bottom: 24px;
+}
+
+/* Карточка товара в результатах */
+.resultProductCard {
+  display: flex;
+  gap: 16px;
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid #e9ecef;
+  transition: all 0.2s;
+}
+
+.resultProductCard:hover {
+  border-color: #4A4FB9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.resultProductImage {
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.resultProductImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.resultProductContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.resultProductContent h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a2c3e;
+  margin-bottom: 6px;
+  font-family: "Raleway", sans-serif;
+  line-height: 1.4;
+}
+
+.resultProductContent p {
+  font-size: 12px;
+  color: #6c7a89;
+  margin-bottom: 10px;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.resultProductButton {
+  background: none;
+  border: none;
+  color: #4A4FB9;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  width: fit-content;
+  transition: color 0.2s;
+  font-family: "Raleway", sans-serif;
+}
+
+.resultProductButton:hover {
+  color: #3a3f9e;
+  text-decoration: underline;
+}
+
+/* Кнопки действий */
+.resultButtons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #e9ecef;
+}
+
+.restartButton, .closeResultButton {
+  padding: 10px 28px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: "Raleway", sans-serif;
+}
+
+.restartButton {
+  background: #f1f5f9;
+  color: #4a5568;
+  border: 1px solid #d1d5db;
+}
+
+.restartButton:hover {
+  background: #e9ecef;
+  transform: translateY(-1px);
+}
+
+.closeResultButton {
+  background: #4A4FB9;
+  color: white;
+  border: none;
+}
+
+.closeResultButton:hover {
+  background: #3a3f9e;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(74, 79, 185, 0.3);
+}
+
+/* Нет результатов */
+.noResult {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.noResultIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.noResult h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a2c3e;
+  margin-bottom: 12px;
+  font-family: "Raleway", sans-serif;
+}
+
+.noResult p {
+  color: #6c7a89;
+  margin-bottom: 24px;
+  font-family: "Raleway", sans-serif;
+}
+
+.noResultButtons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.contactButton {
+  padding: 10px 28px;
+  background: #4A4FB9;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: "Raleway", sans-serif;
+}
+
+.contactButton:hover {
+  background: #3a3f9e;
+}
+
+/* Загрузка */
+.loadingResult {
+  text-align: center;
+  padding: 60px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e9ecef;
+  border-top-color: #4A4FB9;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Подсказка о смягчении критериев */
+.softeningHint {
+  background: #fff8f0;
+  border: 1px solid #ffe0b5;
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: #f59e0b;
+  font-family: "Raleway", sans-serif;
+}
+
+.hintIcon {
+  font-size: 16px;
+}
+
+/* ============================================
+   АДАПТИВНЫЕ СТИЛИ ДЛЯ ВСЕХ МОДАЛЬНЫХ ОКОН
+   ============================================ */
+
+/* Планшеты (768px - 1024px) */
+@media (max-width: 1024px) {
+  .modalLarge {
+    max-width: 90%;
+  }
+}
+
+/* Планшеты вертикальные (768px) */
 @media (max-width: 768px) {
-  .modalWorkLayout {
-    flex-direction: column;
+  .modalOverlay {
+    padding: 12px;
   }
   
-  .modalWorkImage {
-    max-height: 250px;
-  }
-  
-  .modalWorkImage img {
-    height: 100%;
-    object-fit: cover;
-  }
-}
-/* Анимации */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateY(-50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-
-@media (max-width: 768px) {
   .modalContent {
-    padding: 24px;
-    max-height: 95vh;
+    padding: 20px;
+    max-width: 95%;
   }
   
   .modalLarge {
-    padding: 24px;
+    padding: 20px;
+    max-width: 95%;
+  }
+  
+  .modalTitle {
+    font-size: 24px;
+    margin-bottom: 20px;
   }
   
   .modalProductLayout {
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
   }
   
   .modalFormSection {
-    padding: 20px;
+    padding: 16px;
+    position: static;
   }
   
   .modalProductImage img {
-    max-height: 200px;
+    max-height: 180px;
   }
 }
 
-/* Мобильные устройства */
+/* Мобильные устройства (640px) */
 @media (max-width: 640px) {
   .modalOverlay {
     padding: 10px;
   }
   
   .modalContent {
-    padding: 20px;
-    max-height: 98vh;
-  }
-  
-  .modalLarge {
-    padding: 20px;
-  }
-  
-  .modalFormSection {
     padding: 16px;
-  }
-  
-  .formSectionTitle {
-    font-size: 18px;
-  }
-  
-  .formGroup input,
-  .formGroup select,
-  .textarea {
-    padding: 8px 12px;
-    font-size: 13px;
-  }
-  
-  .submitButton {
-    padding: 10px 16px;
-    font-size: 14px;
-  }
-  
-  .specifications ul {
-    padding-left: 16px;
-  }
-  
-  .specifications li {
-    font-size: 12px;
-  }
-}
-
-/* Маленькие мобильные */
-@media (max-width: 480px) {
-  .modalContent {
-    padding: 16px;
+    max-width: 100%;
+    max-height: 95vh;
+    border-radius: 16px;
   }
   
   .modalLarge {
     padding: 16px;
+    max-width: 100%;
+    max-height: 95vh;
+  }
+  
+  .modalTitle {
+    font-size: 20px;
+    margin-bottom: 16px;
   }
   
   .closeButton {
@@ -696,48 +1311,471 @@
     right: 12px;
     width: 28px;
     height: 28px;
-    font-size: 24px;
+    font-size: 20px;
+  }
+  
+  .formGroup input,
+  .formGroup select,
+  .textarea {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+  
+  .submitButton {
+    padding: 10px 16px;
+    font-size: 14px;
   }
   
   .modalFormSection {
-    padding: 14px;
+    padding: 12px;
   }
   
   .formSectionTitle {
-    font-size: 16px;
+    font-size: 18px;
   }
   
   .formSectionSubtitle {
     font-size: 12px;
   }
+  .switchText {
+    font-size: 12px;
+    margin-top: 16px;
+  }
   
-  .specifications {
+  .switchLink {
+    margin-left: 3px;
+  }
+  /* Результаты подбора */
+  .resultProductsGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    max-height: 400px;
+  }
+  
+  .resultProductCard {
     padding: 12px;
   }
-}
-@media (min-width: 992px) {
-  .modalFormSection {
-    margin-top: 60px;
+  
+  .resultProductImage {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .resultProductContent h4 {
+    font-size: 14px;
+  }
+  
+  .resultProductContent p {
+    font-size: 11px;
+  }
+  
+  .resultButtons {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .restartButton, .closeResultButton {
+    text-align: center;
+    padding: 8px 16px;
+  }
+  
+  /* Навигация в квизе */
+  .navigationButtons {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .backButton, .nextButton {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .questionText {
+    font-size: 16px;
+  }
+  
+  .radioLabel {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  
+  /* Кнопки действий в диагностике */
+  .actionButtons {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .repairButton, .resetButton {
+    width: 100%;
   }
 }
 
-/* На планшетах и мобильных форма под карточкой */
-@media (max-width: 991px) {
+/* Маленькие мобильные (480px) - ГЛАВНЫЙ БРЕЙКПОИНТ ДЛЯ ВАШЕЙ ПРОБЛЕМЫ */
+@media (max-width: 480px) {
+  .modalOverlay {
+    padding: 5px;
+  }
+   .switchText {
+    font-size: 11px;
+    margin-top: 14px;
+  }
+  
+  .switchLink {
+    margin-left: 2px;
+  }
+  .modalContent {
+    padding: 12px;
+    max-width: calc(100% - 10px);
+    width: auto;
+    min-width: 0;
+    margin: 0 auto;
+    border-radius: 12px;
+  }
+  
+  .modalLarge {
+    max-width: calc(100% - 10px);
+    width: auto;
+    min-width: 0;
+    padding: 12px;
+  }
+  
+  /* Принудительное обрезание длинных слов */
+  .modalTitle {
+    font-size: 16px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  /* Контейнер для товара - принудительный перенос */
   .modalProductLayout {
     flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    overflow-x: hidden;
+  }
+  
+  .modalProductInfo {
+    width: 100%;
+    min-width: 0;
   }
   
   .modalFormSection {
+    width: 100%;
+    min-width: 0;
+    padding: 12px;
     margin-top: 0;
-  }
-}
-/* Очень большие экраны */
-@media (min-width: 1200px) {
-  .modalLarge {
-    max-width: 1100px;
+    position: static;
   }
   
-  .modalProductLayout {
-    gap: 40px;
+  /* Все текстовые блоки */
+  .modalProductDescription,
+  .specifications li,
+  .workDetails .detailValue,
+  .workResults p {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  /* Спецификации с длинными словами */
+  .specifications {
+    overflow-x: auto;
+    padding: 10px;
+  }
+  
+  .specifications ul {
+    padding-left: 16px;
+    margin: 0;
+  }
+  
+  /* Форма */
+  .form {
+    gap: 10px;
+  }
+  
+  .formGroup {
+    margin-bottom: 10px;
+  }
+  
+  .formGroup input,
+  .formGroup select,
+  .textarea {
+    padding: 8px 10px;
+    font-size: 13px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Кнопки */
+  .submitButton {
+    width: 100%;
+    padding: 10px;
+    font-size: 13px;
+    white-space: normal;
+  }
+  
+  .closeButton {
+    top: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+    font-size: 18px;
+  }
+  
+  .errorText {
+    font-size: 10px;
+  }
+  
+  /* Модальное окно товара */
+  .modalProductImage img {
+    max-height: 150px;
+  }
+  
+  .modalProductDescription {
+    font-size: 12px;
+  }
+  
+  .specifications h4 {
+    font-size: 14px;
+  }
+  
+  .specifications li {
+    font-size: 11px;
+  }
+  
+  .priceValue {
+    font-size: 16px;
+  }
+  
+  /* Результаты подбора */
+  .resultHeader h3 {
+    font-size: 18px;
+  }
+  
+  .resultHeader p {
+    font-size: 12px;
+  }
+  
+  .resultProductCard {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .resultProductImage {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 8px;
+  }
+  
+  .resultProductContent h4 {
+    font-size: 13px;
+  }
+  
+  .resultProductContent p {
+    font-size: 11px;
+    -webkit-line-clamp: 3;
+  }
+  
+  .resultProductButton {
+    font-size: 12px;
+    text-align: center;
+    width: 100%;
+  }
+  
+  /* Квиз */
+  .quizContainer {
+    padding: 10px 0;
+  }
+  
+  .quizHeader h2 {
+    font-size: 18px;
+  }
+  
+  .quizSubtitle {
+    font-size: 12px;
+  }
+  
+  .progressText {
+    font-size: 10px;
+  }
+  
+  .questionText {
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+  
+  .optionsGroup {
+    gap: 8px;
+  }
+  
+  .radioLabel {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+  
+  .radioLabel input {
+    width: 16px;
+    height: 16px;
+  }
+  
+  /* Диагностика */
+  .diagnosticContainer {
+    padding: 10px 0;
+  }
+  
+  .diagnosticHeader h2 {
+    font-size: 18px;
+  }
+  
+  .diagnosticSubtitle {
+    font-size: 12px;
+  }
+  
+  .severityBadge {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+  
+  .diagnosisBlock h4,
+  .recommendationsBlock h4 {
+    font-size: 13px;
+  }
+  
+  .diagnosisBlock p,
+  .recommendationsBlock li {
+    font-size: 12px;
+  }
+  
+  /* Окно работ */
+  .modalWorkLayout {
+    gap: 16px;
+  }
+  
+  .detailLabel {
+    width: 80px;
+    font-size: 12px;
+  }
+  
+  .detailValue {
+    font-size: 12px;
+  }
+  
+  .techTag {
+    padding: 4px 10px;
+    font-size: 10px;
+  }
+  
+  .modalMessage {
+    font-size: 12px;
+  }
+}
+
+/* Супер маленькие мобильные (375px) */
+@media (max-width: 375px) {
+  .modalContent {
+    padding: 12px;
+  }
+  
+  .modalTitle {
+    font-size: 16px;
+  }
+  
+  .formGroup input,
+  .formGroup select,
+  .textarea {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+  .switchText {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .switchLink {
+    margin-left: 0;
+  }
+
+  
+  .submitButton {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+  
+  .resultProductImage {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .resultProductContent h4 {
+    font-size: 12px;
+  }
+  
+  .questionText {
+    font-size: 14px;
+  }
+  
+  .radioLabel {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+  
+  .backButton, .nextButton {
+    padding: 8px;
+    font-size: 12px;
+  }
+  
+  .repairButton, .resetButton {
+    padding: 8px;
+    font-size: 12px;
+  }
+}
+
+/* Очень маленькие (320px) */
+@media (max-width: 320px) {
+  .modalContent {
+    padding: 10px;
+  }
+  
+  .modalTitle {
+    font-size: 15px;
+  }
+  
+  .resultProductImage {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .resultProductContent h4 {
+    font-size: 11px;
+  }
+  
+  .resultProductContent p {
+    font-size: 10px;
+  }
+  
+  .questionText {
+    font-size: 13px;
+  }
+  
+  .radioLabel {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+}
+@media (max-width: 360px) {
+  .modalContent {
+    padding: 10px;
+  }
+  
+  .resultProductCard {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .resultProductImage {
+    margin: 0 auto 10px;
   }
 }

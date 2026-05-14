@@ -14,7 +14,6 @@ function CatalogCard({ selectedCategory, currentPage, itemsPerPage, onPageChange
     const [loading, setLoading] = useState(true);
     const [totalPages, setTotalPages] = useState(1);
 
-    // Загрузка товаров из БД при изменении категории или страницы
     useEffect(() => {
         fetchProducts();
     }, [selectedCategory, currentPage]);

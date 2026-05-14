@@ -88,6 +88,10 @@ export const login = async (req, res) => {
       return res.status(401).json({ error: 'Неверный email или пароль' });
     }
 
+    if (user.isBlocked) {
+      return res.status(403).json({ error: 'Ваш аккаунт заблокирован. Обратитесь к администратору.' });
+    }
+
     const isPasswordValid = await user.comparePassword(password);
     
     if (!isPasswordValid) {
@@ -205,7 +209,21 @@ export const createAdminIfNotExists = async () => {
     } else {
       console.log(' Администратор уже существует');
     }
+
+   const managerExists = await User.findOne({ where: { role: 'manager' } });
+    if (!managerExists) {
+      await User.create({
+        name: 'Менеджер',
+        email: 'manager@tesla.ru',
+        password: 'Manager123!',
+        role: 'manager',
+      });
+      console.log(' Менеджер создан: manager@tesla.ru / Manager123!');
+    }
+    else {
+      console.log(' Менеджер уже существует');
+    }
   } catch (error) {
-    console.error('Error creating admin:', error);
+    console.error('Ошибка создания админа/менеджера:', error);
   }
 };

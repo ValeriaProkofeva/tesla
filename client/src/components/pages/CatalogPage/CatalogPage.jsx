@@ -4,12 +4,14 @@ import InfoServices from '../../infoServices/infoServices'
 import Header from '../../Header/Header'
 import Footer from '../../Footer/Footer'
 import CatalogCard from './CatalogCard'
+import QuizModal from '../../Modals/QuizModal'
 
 
 function CatalogPage() {
 
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
+  const [quizOpen, setQuizOpen] = useState(false);
   const itemsPerPage = 12;
 
   const categories = [
@@ -30,9 +32,9 @@ function CatalogPage() {
     { id: 'cathodic', name: 'Установки катодной защиты' },
   ];
 
-const handleCategoryChange = (categoryId) => {
+  const handleCategoryChange = (categoryId) => {
     setSelectedCategory(categoryId);
-    setCurrentPage(1); 
+    setCurrentPage(1);
   };
 
   return (
@@ -40,13 +42,13 @@ const handleCategoryChange = (categoryId) => {
       <Header></Header>
       <div className={styles.Info}>
         <InfoServices></InfoServices>
-        <button className={styles.expr}>Помочь с подбором трансформатора</button>
+        <button className={styles.quizButton} onClick={() => setQuizOpen(true)} >Помочь с подбором товара </button>
       </div>
 
       <div className={styles.catalogPage}>
         <div className={styles.container}>
           <h1 className={styles.pageTitle}>Каталог продукции</h1>
-          
+
           <div className={styles.catalogLayout}>
             <aside className={styles.filterSidebar}>
               <h3 className={styles.filterTitle}>Категории</h3>
@@ -64,8 +66,8 @@ const handleCategoryChange = (categoryId) => {
               </ul>
             </aside>
 
-             <div className={styles.productsContent}>
-              <CatalogCard 
+            <div className={styles.productsContent}>
+              <CatalogCard
                 selectedCategory={selectedCategory}
                 currentPage={currentPage}
                 itemsPerPage={itemsPerPage}
@@ -75,7 +77,7 @@ const handleCategoryChange = (categoryId) => {
           </div>
         </div>
       </div>
-
+<QuizModal isOpen={quizOpen} onClose={() => setQuizOpen(false)} />
       <Footer></Footer>
     </>
   )
