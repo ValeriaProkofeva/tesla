@@ -11,6 +11,7 @@
     align-items: flex-end;
     gap: clamp(16px, 4vw, 40px);
     margin-top: clamp(40px, 8vw, 70px);
+     margin-bottom: clamp(30px, 5vw, 50px); 
     padding: 0 clamp(16px, 4vw, 40px);
     flex-wrap: wrap;
     box-sizing: border-box;
@@ -223,6 +224,7 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
+         margin-bottom: 40px; 
     }
     
     .expr {
@@ -289,6 +291,7 @@
     .Info {
         gap: 20px;
         margin-top: 30px;
+          margin-bottom: 30px;
     }
     
     .ServH {

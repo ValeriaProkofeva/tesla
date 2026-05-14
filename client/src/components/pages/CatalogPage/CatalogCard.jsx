@@ -137,7 +137,7 @@ function CatalogCard({ selectedCategory, currentPage, itemsPerPage, onPageChange
                     <div key={product.id} className={styles.productCard}>
                         <div className={styles.productImage}>
                             <img 
-                                src={product.image || 'client/public/images/default.jpg'} 
+                                src={product.image || '/images/default.jpg'} 
                                 alt={product.name} 
                                 onError={(e) => {
                                     e.target.src = '';

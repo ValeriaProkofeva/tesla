@@ -1,6 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import http from 'http';
 import { sequelize } from './models/index.js';
 import authRoutes from './routes/auth.js';
@@ -16,6 +18,9 @@ import { initSocket } from './socket/index.js';
 
 dotenv.config();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
 const server = http.createServer(app);
 const PORT = process.env.PORT || 5000;
@@ -30,6 +35,14 @@ app.use('/api/products', productRoutes);
 app.use('/api/equipment-orders', equipmentOrderRoutes);
 app.use('/api/admin/users', adminUserRoutes);
 app.use('/api/chats', chatRoutes);
+
+
+app.use('/images', express.static(path.join(__dirname, 'public/images')));
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get(/^\/(?!api).*/, (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 const io = initSocket(server);
 

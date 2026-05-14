@@ -66,7 +66,7 @@ function ServicesCard() {
             </button>
           </div>
           <div className={styles.Right}>
-            <img className={styles.RightImg} src="client/public/images/Serv1.jpg" alt="Продажа" />
+            <img className={styles.RightImg} src="/images/Serv1.jpg" alt="Продажа" />
           </div>
         </div>
 
@@ -115,7 +115,7 @@ function ServicesCard() {
             </button>
           </div>
           <div className={styles.Right}>
-            <img className={styles.RightImg} src="client/public/images/Serv2.jpg" alt="Ремонт" />
+            <img className={styles.RightImg} src="/images/Serv2.jpg" alt="Ремонт" />
           </div>
         </div>
 
@@ -144,7 +144,7 @@ function ServicesCard() {
             </button>
           </div>
           <div className={styles.Right}>
-            <img className={styles.RightImg} src="client/public/images/Serv3.jpg" alt="Электромонтаж" />
+            <img className={styles.RightImg} src="/images/Serv3.jpg" alt="Электромонтаж" />
           </div>
         </div>
 
@@ -174,7 +174,7 @@ function ServicesCard() {
             </button>
           </div>
           <div className={styles.Right}>
-            <img className={styles.RightImg} src="client/public/images/Serv4.jpg" alt="Пуско-наладка" />
+            <img className={styles.RightImg} src="/images/Serv4.jpg" alt="Пуско-наладка" />
           </div>
         </div>
       </div>

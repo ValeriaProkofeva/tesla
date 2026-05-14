@@ -196,7 +196,7 @@ const ProductManager = () => {
                 name="image"
                 value={formData.image}
                 onChange={handleChange}
-                placeholder="client/public/images/your-image.jpg"
+                placeholder="/images/your-image.jpg"
               />
             </div>
             

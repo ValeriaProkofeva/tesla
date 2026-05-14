@@ -66,7 +66,7 @@ function Header() {
       <div className={styles.HeaderContainer}>
         <div className={styles.HeaderLeft}>
           <div className={styles.logo} onClick={navigateToHome} style={{ cursor: 'pointer' }}>
-            <img className={styles.logoImg} src="client/public/images/logo.svg" alt="логотип" />
+            <img className={styles.logoImg} src="/images/logo.svg" alt="логотип" />
             <p className={styles.logoTxt}>Тесла</p>
           </div>
         </div>

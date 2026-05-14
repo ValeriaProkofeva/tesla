@@ -184,7 +184,7 @@ function ContentHome() {
             <p className={styles.AboutTxt2}>За время деятельности компании успешно реализованы сложные энергетические проекты – электрические подстанции и распределительные пункты 0,4- 35 кВ, воздушные и кабельные линии электропередач, объекты солнечной энергетики и многое другое.</p>
           </div>
           <div className={styles.AboutRight}>
-            <img className={styles.AboutImg} src="client/public/images/about.jpg" alt="Вышка" loading='lazy' />
+            <img className={styles.AboutImg} src="/images/about.jpg" alt="Вышка" loading='lazy' />
           </div>
         </div>
       </div>
@@ -196,7 +196,7 @@ function ContentHome() {
         </div>
         <div className={styles.servicesCards}>
           <div className={styles.servecesCard}>
-            <img src="client/public/images/sale.jpg" alt="Продажа" loading='lazy' />
+            <img src="/images/sale.jpg" alt="Продажа" loading='lazy' />
             <div className={styles.cardTxt}>
               <p className={styles.cardTxt1}>Продажа оборудования</p>
               <p className={styles.cardTxt2} onClick={navigateToServices}
@@ -204,7 +204,7 @@ function ContentHome() {
             </div>
           </div>
           <div className={styles.servecesCard}>
-            <img src="client/public/images/repair.jpg" alt="Ремонт" loading='lazy' />
+            <img src="/images/repair.jpg" alt="Ремонт" loading='lazy' />
             <div className={styles.cardTxt}>
               <p className={styles.cardTxt1}>Ремонт трансформаторов</p>
               <p className={styles.cardTxt2} onClick={navigateToServices}
@@ -212,7 +212,7 @@ function ContentHome() {
             </div>
           </div>
           <div className={styles.servecesCard}>
-            <img src="client/public/images/montage.jpg" alt="Монтаж" loading='lazy' />
+            <img src="/images/montage.jpg" alt="Монтаж" loading='lazy' />
             <div className={styles.cardTxt}>
               <p className={styles.cardTxt1}>Промышленный электромонтаж</p>
               <p className={styles.cardTxt2} onClick={navigateToServices}
@@ -220,7 +220,7 @@ function ContentHome() {
             </div>
           </div>
           <div className={styles.servecesCard}>
-            <img src="client/public/images/work.jpg" alt="Работы" loading='lazy' />
+            <img src="/images/work.jpg" alt="Работы" loading='lazy' />
             <div className={styles.cardTxt}>
               <p className={styles.cardTxt1}>Пуско-наладочные работы и ЭТЛ</p>
               <p className={styles.cardTxt2} onClick={navigateToServices}
