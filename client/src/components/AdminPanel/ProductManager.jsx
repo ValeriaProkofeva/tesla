@@ -51,7 +51,7 @@ const ProductManager = () => {
   const fetchProducts = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/products', {
+      const response = await axios.get('/api/products', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setProducts(response.data.products);
@@ -82,8 +82,8 @@ const ProductManager = () => {
     try {
       const token = localStorage.getItem('token');
       const url = editingProduct 
-        ? `http://localhost:5000/api/products/${editingProduct.id}`
-        : 'http://localhost:5000/api/products';
+        ? `/api/products/${editingProduct.id}`
+        : '/api/products';
       const method = editingProduct ? 'put' : 'post';
       
       await axios[method](url, formData, {
@@ -120,7 +120,7 @@ const ProductManager = () => {
     
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/api/products/${id}`, {
+      await axios.delete(`/api/products/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       success('Товар удален');

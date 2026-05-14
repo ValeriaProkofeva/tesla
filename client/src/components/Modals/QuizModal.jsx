@@ -41,7 +41,7 @@ const QuizModal = ({ isOpen, onClose }) => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/products');
+      const response = await axios.get('/api/products');
       setAllProducts(response.data.products);
     } catch (error) {
       console.error('Error fetching products:', error);

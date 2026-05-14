@@ -22,8 +22,8 @@ function CatalogCard({ selectedCategory, currentPage, itemsPerPage, onPageChange
         setLoading(true);
         try {
             const url = selectedCategory === 'all' 
-                ? `http://localhost:5000/api/products?page=${currentPage}&limit=${itemsPerPage}`
-                : `http://localhost:5000/api/products/category/${selectedCategory}?page=${currentPage}&limit=${itemsPerPage}`;
+                ? `/api/products?page=${currentPage}&limit=${itemsPerPage}`
+                : `/api/products/category/${selectedCategory}?page=${currentPage}&limit=${itemsPerPage}`;
             
             const response = await axios.get(url);
             setProducts(response.data.products);

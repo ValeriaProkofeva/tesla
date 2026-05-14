@@ -34,7 +34,7 @@ const AdminPanel = () => {
   const fetchUsers = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/admin/users', {
+      const response = await axios.get('/api/admin/users', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUsers(response.data.users);
@@ -46,7 +46,7 @@ const AdminPanel = () => {
   const fetchEquipmentOrders = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/equipment-orders/all', {
+      const response = await axios.get('/api/equipment-orders/all', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setEquipmentOrders(response.data.orders);
@@ -63,7 +63,7 @@ const AdminPanel = () => {
       if (adminComment !== undefined) updateData.adminComment = adminComment;
 
       await axios.put(
-        `http://localhost:5000/api/equipment-orders/${id}`,
+        `/api/equipment-orders/${id}`,
         updateData,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -83,7 +83,7 @@ const AdminPanel = () => {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/api/equipment-orders/${id}`, {
+      await axios.delete(`/api/equipment-orders/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -100,7 +100,7 @@ const AdminPanel = () => {
   const fetchConsultations = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/consultations/all', {
+      const response = await axios.get('/api/consultations/all', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setConsultations(response.data.consultations);
@@ -113,7 +113,7 @@ const AdminPanel = () => {
   const fetchServiceRequests = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/service-requests/all', {
+      const response = await axios.get('/api/service-requests/all', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setServiceRequests(response.data.requests);
@@ -126,7 +126,7 @@ const AdminPanel = () => {
     try {
       const token = localStorage.getItem('token');
       await axios.put(
-        `http://localhost:5000/api/consultations/${id}`,
+        `/api/consultations/${id}`,
         { status: newStatus },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -149,7 +149,7 @@ const AdminPanel = () => {
       if (comment !== undefined) updateData.comment = comment;
 
       await axios.put(
-        `http://localhost:5000/api/service-requests/${id}`,
+        `/api/service-requests/${id}`,
         updateData,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -169,7 +169,7 @@ const AdminPanel = () => {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/api/consultations/${id}`, {
+      await axios.delete(`/api/consultations/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -188,7 +188,7 @@ const AdminPanel = () => {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/api/service-requests/${id}`, {
+      await axios.delete(`/api/service-requests/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

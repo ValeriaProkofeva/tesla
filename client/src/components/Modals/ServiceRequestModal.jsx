@@ -121,7 +121,7 @@ const ServiceRequestModal = ({ isOpen, onClose, preFilledData }) => {
     try {
       const token = localStorage.getItem('token');
       await axios.post(
-        'http://localhost:5000/api/service-requests',
+        '/api/service-requests',
         {
           serviceType: formData.serviceType,
           serviceName: formData.serviceName,

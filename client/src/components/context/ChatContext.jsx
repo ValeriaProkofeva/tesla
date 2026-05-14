@@ -136,7 +136,7 @@ export const ChatProvider = ({ children }) => {
   
   try {
     console.log('Fetching default manager...');
-    const response = await fetch('http://localhost:5000/api/chats/manager/default', {
+    const response = await fetch('/api/chats/manager/default', {
       headers: { Authorization: `Bearer ${token}` },
     });
     
@@ -162,8 +162,8 @@ export const ChatProvider = ({ children }) => {
     
     try {
       const url = user.role === 'manager' || user.role === 'admin'
-        ? 'http://localhost:5000/api/chats/manager/chats'
-        : 'http://localhost:5000/api/chats/user/chats';
+        ? '/api/chats/manager/chats'
+        : '/api/chats/user/chats';
       
       const response = await fetch(url, {
         headers: { Authorization: `Bearer ${token}` },
@@ -249,7 +249,7 @@ export const ChatProvider = ({ children }) => {
   if (!token) return null;
   
   try {
-    const response = await fetch(`http://localhost:5000/api/chats/user/start/${managerId}`, {
+    const response = await fetch(`/api/chats/user/start/${managerId}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     
@@ -295,7 +295,7 @@ const openManagerChat = useCallback(async (userId, userName) => {
   if (!token) return null;
   
   try {
-    const response = await fetch(`http://localhost:5000/api/chats/manager/chat/${userId}`, {
+    const response = await fetch(`/api/chats/manager/chat/${userId}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     
@@ -374,7 +374,7 @@ const openChat = useCallback(async (targetId, targetName) => {
     if (!token) return [];
     
     try {
-      const response = await fetch('http://localhost:5000/api/chats/manager/users', {
+      const response = await fetch('/api/chats/manager/users', {
         headers: { Authorization: `Bearer ${token}` },
       });
       
@@ -396,7 +396,7 @@ const openChat = useCallback(async (targetId, targetName) => {
     if (!token) return false;
     
     try {
-      const response = await fetch('http://localhost:5000/api/chats/manager/broadcast', {
+      const response = await fetch('/api/chats/manager/broadcast', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

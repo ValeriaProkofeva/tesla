@@ -89,7 +89,7 @@ const ProductModal = ({ isOpen, onClose, product }) => {
     try {
       const token = localStorage.getItem('token');
       await axios.post(
-        'http://localhost:5000/api/equipment-orders',
+        '/api/equipment-orders',
         {
           productName: product.name,
           productId: product.id,

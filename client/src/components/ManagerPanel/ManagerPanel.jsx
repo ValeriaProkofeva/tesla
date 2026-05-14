@@ -49,7 +49,7 @@ const ManagerPanel = () => {
   const fetchConsultations = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/consultations/all', {
+      const response = await axios.get('/api/consultations/all', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setConsultations(response.data.consultations);
@@ -63,7 +63,7 @@ const ManagerPanel = () => {
   const fetchServiceRequests = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/service-requests/all', {
+      const response = await axios.get('/api/service-requests/all', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setServiceRequests(response.data.requests);
@@ -75,7 +75,7 @@ const ManagerPanel = () => {
   const fetchEquipmentOrders = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/equipment-orders/all', {
+      const response = await axios.get('/api/equipment-orders/all', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setEquipmentOrders(response.data.orders);
@@ -88,7 +88,7 @@ const ManagerPanel = () => {
     try {
       const token = localStorage.getItem('token');
       await axios.put(
-        `http://localhost:5000/api/consultations/${id}`,
+        `/api/consultations/${id}`,
         { status: newStatus },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -111,7 +111,7 @@ const ManagerPanel = () => {
       if (comment !== undefined) updateData.comment = comment;
 
       await axios.put(
-        `http://localhost:5000/api/service-requests/${id}`,
+        `/api/service-requests/${id}`,
         updateData,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -134,7 +134,7 @@ const ManagerPanel = () => {
       if (adminComment !== undefined) updateData.adminComment = adminComment;
 
       await axios.put(
-        `http://localhost:5000/api/equipment-orders/${id}`,
+        `/api/equipment-orders/${id}`,
         updateData,
         { headers: { Authorization: `Bearer ${token}` } }
       );

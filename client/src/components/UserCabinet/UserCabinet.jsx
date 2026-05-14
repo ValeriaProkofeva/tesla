@@ -47,7 +47,7 @@ const UserCabinet = () => {
   const fetchConsultations = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/consultations/my', {
+      const response = await axios.get('/api/consultations/my', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setConsultations(response.data.consultations);
@@ -61,7 +61,7 @@ const UserCabinet = () => {
   const fetchServiceRequests = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/service-requests/my', {
+      const response = await axios.get('/api/service-requests/my', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setServiceRequests(response.data.requests);
@@ -194,7 +194,7 @@ const UserCabinet = () => {
   const fetchEquipmentOrders = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/equipment-orders/my', {
+      const response = await axios.get('/api/equipment-orders/my', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setEquipmentOrders(response.data.orders);

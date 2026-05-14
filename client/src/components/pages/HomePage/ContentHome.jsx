@@ -146,7 +146,7 @@ function ContentHome() {
     try {
       const token = localStorage.getItem('token');
       await axios.post(
-        'http://localhost:5000/api/consultations',
+        '/api/consultations',
         {
           name: formData.name.trim(),
           phone: formData.phone,

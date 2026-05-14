@@ -28,7 +28,7 @@ const UserManager = () => {
   const fetchUsers = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/admin/users', {
+      const response = await axios.get('/api/admin/users', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUsers(response.data.users);
@@ -44,7 +44,7 @@ const UserManager = () => {
   const handleUpdateUser = async (adminPassword) => {
     const token = localStorage.getItem('token');
     await axios.put(
-      `http://localhost:5000/api/admin/users/${editingUser.id}`,
+      `/api/admin/users/${editingUser.id}`,
       {
         name: editFormData.name,
         email: editFormData.email,
@@ -60,7 +60,7 @@ const UserManager = () => {
   const createToggleBlockHandler = (user, newBlockedStatus) => async (adminPassword) => {
     const token = localStorage.getItem('token');
     await axios.patch(
-      `http://localhost:5000/api/admin/users/${user.id}/block`,
+      `/api/admin/users/${user.id}/block`,
       {
         isBlocked: newBlockedStatus,
         adminPassword,
@@ -78,7 +78,7 @@ const UserManager = () => {
     const token = localStorage.getItem('token');
     await axios({
       method: 'delete',
-      url: `http://localhost:5000/api/admin/users/${user.id}`,
+      url: `/api/admin/users/${user.id}`,
       headers: { Authorization: `Bearer ${token}` },
       data: { adminPassword }
     });
@@ -88,7 +88,7 @@ const UserManager = () => {
   const createChangePasswordHandler = (user, newPassword) => async (adminPassword) => {
     const token = localStorage.getItem('token');
     await axios.put(
-      `http://localhost:5000/api/admin/users/${user.id}/password`,
+      `/api/admin/users/${user.id}/password`,
       {
         newPassword,
         adminPassword,

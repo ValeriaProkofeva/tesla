@@ -16,8 +16,6 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem('token'));
   const [loading, setLoading] = useState(true);
 
-  const API_URL = 'http://localhost:5000/api';
-
   axios.interceptors.request.use((config) => {
     const currentToken = localStorage.getItem('token');
     if (currentToken) {
@@ -32,11 +30,11 @@ export const AuthProvider = ({ children }) => {
     } else {
       setLoading(false);
     }
-  }, [token]);
+  }, [token]); 
 
   const fetchProfile = async () => {
     try {
-      const response = await axios.get(`${API_URL}/auth/profile`);
+      const response = await axios.get(`/api/auth/profile`);
       setUser(response.data.user);
     } catch (error) {
       console.error('Failed to fetch profile:', error);
@@ -51,7 +49,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (userData) => {
     try {
-      const response = await axios.post(`${API_URL}/auth/register`, userData);
+      const response = await axios.post(`/api/auth/register`, userData);
       const { token, user } = response.data;
       localStorage.setItem('token', token);
       setToken(token);
@@ -68,7 +66,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post(`${API_URL}/auth/login`, { email, password });
+      const response = await axios.post(`/api/auth/login`, { email, password });
       const { token, user } = response.data;
       localStorage.setItem('token', token);
       setToken(token);
@@ -94,7 +92,7 @@ export const AuthProvider = ({ children }) => {
 
   const updateProfile = async (profileData) => {
     try {
-      const response = await axios.put(`${API_URL}/auth/profile`, profileData);
+      const response = await axios.put(`/api/auth/profile`, profileData);
       setUser(response.data.user);
       return { success: true, message: response.data.message };
     } catch (error) {
